@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="input-group input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing">Localização</span>
+    </div>
+    <input type="text" class="form-control" name="local" placeholder="Procurar localização...">
+    <div class="input-group-append">
+        <button class="btn btn-outline-dark" type="button" id="button-addon2">Procurar</button>
+    </div>
+</div>
+    <br><br>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            Django gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="http://www.djangobook.com">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>The Python Package Index is a repository of software for the Python programming language.</p>
+        <p><a class="btn btn-default" href="https://pypi.python.org/pypi">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>pythonanywhere</h2>
+        <p>Host, run, and code Python in the cloud!</p>
+        <p><a class="btn btn-default" href="https://www.pythonanywhere.com/">Learn more &raquo;</a></p>
+    </div>
+</div>
+
+{% endblock %}
