@@ -12,27 +12,70 @@
     </div>
 </div>
     <br><br>
-
+{% load static %}
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            Django gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://www.djangobook.com">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.python.org/pypi">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>pythonanywhere</h2>
-        <p>Host, run, and code Python in the cloud!</p>
-        <p><a class="btn btn-default" href="https://www.pythonanywhere.com/">Learn more &raquo;</a></p>
+        <h2>{{ location }}</h2>
+        {% if symbol == "01d" %}<img src="{% static 'img/01d.png' %}">
+            {% elif symbol == "01n" %}<img src="{% static 'img/01n.png' %}">
+            {% elif symbol == "02d" %}<img src="{% static 'img/02d.png' %}">
+            {% elif symbol == "02n" %}<img src="{% static 'img/02n.png' %}">
+            {% elif symbol == "03d" %}<img src="{% static 'img/03d.png' %}">
+            {% elif symbol == "03n" %}<img src="{% static 'img/03n.png' %}">
+            {% elif symbol == "04d" %}<img src="{% static 'img/04d.png' %}">
+            {% elif symbol == "04n" %}<img src="{% static 'img/04n.png' %}">
+            {% elif symbol == "09d" %}<img src="{% static 'img/09d.png' %}">
+            {% elif symbol == "09n" %}<img src="{% static 'img/09n.png' %}">
+            {% elif symbol == "10d" %}<img src="{% static 'img/10d.png' %}">
+            {% elif symbol == "10n" %}<img src="{% static 'img/10n.png' %}">
+            {% elif symbol == "11d" %}<img src="{% static 'img/11d.png' %}">
+            {% elif symbol == "11n" %}<img src="{% static 'img/11n.png' %}">
+            {% elif symbol == "13d" %}<img src="{% static 'img/13d.png' %}">
+            {% elif symbol == "13n" %}<img src="{% static 'img/13n.png' %}">
+            {% elif symbol == "50d" %}<img src="{% static 'img/50d.png' %}">
+            {% elif symbol == "50n" %}<img src="{% static 'img/50n.png' %}">
+        {% endif %}
+        <table class="table">
+            <tbody>
+                <tr>
+                  <th scope="row">Precipitação</th>
+                  <td>{{ precipitation }} %</td>
+                </tr>
+                <tr>
+                  <th scope="row">Direção Vento</th>
+                  <td>{{ windDirection }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Velocidade Vento</th>
+                  <td>{{ windSpeed }} m/s</td>
+                </tr>
+                <tr>
+                  <th scope="row">Temperatura</th>
+                  <td>{{ temperature }}°C</td>
+                </tr>
+                <tr>
+                  <th scope="row">Feels like</th>
+                  <td>{{ feels_like }}°C</td>
+                </tr>
+                <tr>
+                  <th scope="row">Pressão</th>
+                  <td>{{ pressure }} hPa</td>
+                </tr>
+                <tr>
+                  <th scope="row">Humidade</th>
+                  <td>{{ humidity }} %</td>
+                </tr>
+                <tr>
+                  <th scope="row">Nuvens</th>
+                  <td>{{ clouds }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Visibilidade</th>
+                  <td>{{ visibility }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
