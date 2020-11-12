@@ -22,7 +22,7 @@ def home(request):
     # TODO 2 function to get data structure from xml
     # TODO 3 tparams getting info from data_dict
     tparams = {
-        'title': f'Meteorologia - {str(datetime.now().day)}',
+        'title': f'Meteorologia - {str(datetime.now().day) + "/" + str(datetime.now().month)}',
         'year': datetime.now().year,
         'location': location_id,
         'symbol': "04d",
