@@ -22,7 +22,7 @@ def home(request):
     # TODO 2 function to get data structure from xml
     # TODO 3 tparams getting info from data_dict
     tparams = {
-        'title': f'Meteorologia - {str(datetime.now().day) + "/" + str(datetime.now().month)}',
+        'title': f'Meteorologia - {datetime.now().day}/{datetime.now().month}',
         'year': datetime.now().year,
         'location': location_id,
         'symbol': "04d",
@@ -50,7 +50,7 @@ def data_dict(xml):
 
 def local_id(str):
     '''
-    TODO 4: translate using file.json
+    TODO 4: translate using city.list.json
     :param str: string with the name of the city
     :return: int being the id of the input city
     '''
