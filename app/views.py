@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import render
 from datetime import datetime
+from BaseXClient import BaseXClient
+import xmltodict
 
 # URL to Weather XML:
 # http://api.openweathermap.org/data/2.5/forecast?id=2742611&units=metric&mode=xml&APPID=d0279fea67692adea0e260e4cf86d072
@@ -17,10 +19,9 @@ def home(request):
     else:
         location_str = 'Aveiro'
     location_id = local_id(location_str)
-    # TODO 0 ...
-    # TODO 1 function to get xml from location_id
-    # TODO 2 function to get data structure from xml
-    # TODO 3 tparams getting info from data_dict
+    # TODO f1 get xml from db and location_id
+    # TODO f2 function to get data structure from xml
+    # TODO f3 tparams getting info from data_dict
     tparams = {
         'title': f'Meteorologia - {datetime.now().day}/{datetime.now().month}',
         'year': datetime.now().year,
@@ -39,18 +40,38 @@ def home(request):
     return render(request, 'index.html', tparams)
 
 
+def db_to_xml(db_name: str, id: int):
+    '''
+    TODO f1
+    :param db_name: name of database containing the data
+    :param id: identification of the city
+    :return: xml with city's weather info
+    '''
+
+    session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
+    try:
+        xml = session.execute("xquery collection('{}')".format(db_name))
+        # TODO filter here data with xquery, e.g. get only the city that was requested
+    finally:
+        session.close()
+
+    return xml
+
+
 def data_dict(xml):
     '''
-    TODO 2: this function
+    TODO f2: this function
     :param xml:
     :return: dict with weather parameters (same format of tparams)
     '''
-    return dict()
+    d = xmltodict.parse(xml)
+    # TODO d is an OrderedDict, we may need to change to a simple dict
+    return d
 
 
 def local_id(str):
     '''
-    TODO 4: translate using city.list.json
+    TODO f4: translate using city.list.json
     :param str: string with the name of the city
     :return: int being the id of the input city
     '''
