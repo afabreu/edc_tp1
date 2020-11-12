@@ -17,6 +17,7 @@ def home(request):
     else:
         location_str = 'Aveiro'
     location_id = local_id(location_str)
+    # TODO 0 ...
     # TODO 1 function to get xml from location_id
     # TODO 2 function to get data structure from xml
     # TODO 3 tparams getting info from data_dict
@@ -49,7 +50,7 @@ def data_dict(xml):
 
 def local_id(str):
     '''
-    TODO 4
+    TODO 4: translate using file.json
     :param str: string with the name of the city
     :return: int being the id of the input city
     '''
