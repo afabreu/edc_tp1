@@ -51,7 +51,7 @@ def db_to_xml(db_name: str, id: int):
     session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
     try:
         xml = session.execute("xquery collection('{}')".format(db_name))
-        # TODO filter here data with xquery, e.g. get only the city that was requested
+        # TODO filter data to get requested city's weather parameters
     finally:
         session.close()
 
