@@ -2,15 +2,18 @@
 
 {% block content %}
 
-<div class="input-group input-group mb-3">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing">Localização</span>
+<form action="" class="find-location" method="post">
+    <div class="input-group input-group mb-3">
+        {% csrf_token %}
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing">Localização</span>
+        </div>
+        <input type="text" class="form-control" name="local" placeholder="Procurar localização...">
+        <div class="input-group-append">
+            <input class="btn btn-outline-dark" type="submit" value="Procurar">
+        </div>
     </div>
-    <input type="text" class="form-control" name="local" placeholder="Procurar localização...">
-    <div class="input-group-append">
-        <button class="btn btn-outline-dark" type="button" id="button-addon2">Procurar</button>
-    </div>
-</div>
+</form>
     <br><br>
 {% load static %}
 

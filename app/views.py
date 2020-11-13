@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import render
 from datetime import datetime
+import json
+import edc_tp1.settings
 from BaseXClient import BaseXClient
 import xmltodict
 
@@ -9,10 +11,17 @@ import xmltodict
 
 # Create your views here.
 
+cities = {}
+
+with open(edc_tp1.settings.CITIES_JSON) as f:
+    json_data = json.loads(f.read())
+    for jd in json_data:
+        cities[jd['name']] = jd['id']
+
 
 def home(request):
-    if 'location' in request.POST:
-        location_str = request.POST['location']
+    if 'local' in request.POST:
+        location_str = request.POST['local']
         if location_str == "":
             messages.warning(request, 'Empty search! Default location shown')
             location_str = 'Aveiro'
@@ -25,7 +34,7 @@ def home(request):
     tparams = {
         'title': f'Meteorologia - {datetime.now().day}/{datetime.now().month}',
         'year': datetime.now().year,
-        'location': location_id,
+        'location': f'{location_str} - {location_id}',
         'symbol': "04d",
         'precipitation': 0,
         'windDirection': "East-southeast",
@@ -75,4 +84,8 @@ def local_id(str):
     :param str: string with the name of the city
     :return: int being the id of the input city
     '''
-    return 2742611
+    if str == "Lisboa":
+        city_name = "Lisbon"
+    else:
+        city_name = str
+    return cities.get(city_name, 8010417)
