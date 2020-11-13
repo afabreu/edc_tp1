@@ -1,2 +1,499 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<weatherdata><location><name>Aveiro</name><type></type><country>PT</country><timezone>0</timezone><location altitude="0" latitude="40.6443" longitude="-8.6455" geobase="geonames" geobaseid="2742611"></location></location><credit></credit><meta><lastupdate></lastupdate><calctime>0</calctime><nextupdate></nextupdate></meta><sun rise="2020-11-13T07:19:22" set="2020-11-13T17:18:40"></sun><forecast><time from="2020-11-13T21:00:00" to="2020-11-14T00:00:00"><symbol number="803" name="broken clouds" var="04n"></symbol><precipitation probability="0"></precipitation><windDirection deg="131" code="SE" name="SouthEast"></windDirection><windSpeed mps="3.85" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="13.9" min="13.9" max="13.92"></temperature><feels_like value="11.49" unit="celsius"></feels_like><pressure unit="hPa" value="1019"></pressure><humidity value="82" unit="%"></humidity><clouds value="broken clouds" all="83" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-14T00:00:00" to="2020-11-14T03:00:00"><symbol number="802" name="scattered clouds" var="03n"></symbol><precipitation probability="0"></precipitation><windDirection deg="140" code="SE" name="SouthEast"></windDirection><windSpeed mps="4.29" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="13.8" min="13.77" max="13.8"></temperature><feels_like value="11.01" unit="celsius"></feels_like><pressure unit="hPa" value="1018"></pressure><humidity value="81" unit="%"></humidity><clouds value="scattered clouds" all="46" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-14T03:00:00" to="2020-11-14T06:00:00"><symbol number="802" name="scattered clouds" var="03n"></symbol><precipitation probability="0.09"></precipitation><windDirection deg="141" code="SE" name="SouthEast"></windDirection><windSpeed mps="4.42" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="14.54" min="14.54" max="14.58"></temperature><feels_like value="11.81" unit="celsius"></feels_like><pressure unit="hPa" value="1017"></pressure><humidity value="80" unit="%"></humidity><clouds value="scattered clouds" all="42" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-14T06:00:00" to="2020-11-14T09:00:00"><symbol number="500" name="light rain" var="10d"></symbol><precipitation probability="0.66" unit="3h" value="0.73" type="rain"></precipitation><windDirection deg="139" code="SE" name="SouthEast"></windDirection><windSpeed mps="4.7" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="15.08" min="15.08" max="15.09"></temperature><feels_like value="12.48" unit="celsius"></feels_like><pressure unit="hPa" value="1018"></pressure><humidity value="83" unit="%"></humidity><clouds value="overcast clouds" all="85" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-14T09:00:00" to="2020-11-14T12:00:00"><symbol number="500" name="light rain" var="10d"></symbol><precipitation probability="0.46" unit="3h" value="0.16" type="rain"></precipitation><windDirection deg="160" code="SSE" name="South-southeast"></windDirection><windSpeed mps="4.54" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="17.74" min="17.74" max="17.74"></temperature><feels_like value="15.64" unit="celsius"></feels_like><pressure unit="hPa" value="1017"></pressure><humidity value="76" unit="%"></humidity><clouds value="overcast clouds" all="91" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-14T12:00:00" to="2020-11-14T15:00:00"><symbol number="500" name="light rain" var="10d"></symbol><precipitation probability="0.54" unit="3h" value="0.3" type="rain"></precipitation><windDirection deg="184" code="S" name="South"></windDirection><windSpeed mps="4.58" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="18.7" min="18.7" max="18.7"></temperature><feels_like value="16.96" unit="celsius"></feels_like><pressure unit="hPa" value="1017"></pressure><humidity value="77" unit="%"></humidity><clouds value="overcast clouds" all="92" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-14T15:00:00" to="2020-11-14T18:00:00"><symbol number="500" name="light rain" var="10n"></symbol><precipitation probability="0.66" unit="3h" value="0.68" type="rain"></precipitation><windDirection deg="218" code="SW" name="Southwest"></windDirection><windSpeed mps="2.91" unit="m/s" name="Light breeze"></windSpeed><temperature unit="celsius" value="16.04" min="16.04" max="16.04"></temperature><feels_like value="15.65" unit="celsius"></feels_like><pressure unit="hPa" value="1018"></pressure><humidity value="94" unit="%"></humidity><clouds value="broken clouds" all="69" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-14T18:00:00" to="2020-11-14T21:00:00"><symbol number="500" name="light rain" var="10n"></symbol><precipitation probability="0.36" unit="3h" value="0.32" type="rain"></precipitation><windDirection deg="177" code="S" name="South"></windDirection><windSpeed mps="3.21" unit="m/s" name="Light breeze"></windSpeed><temperature unit="celsius" value="15.75" min="15.75" max="15.75"></temperature><feels_like value="15.04" unit="celsius"></feels_like><pressure unit="hPa" value="1019"></pressure><humidity value="94" unit="%"></humidity><clouds value="overcast clouds" all="98" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-14T21:00:00" to="2020-11-15T00:00:00"><symbol number="804" name="overcast clouds" var="04n"></symbol><precipitation probability="0.23"></precipitation><windDirection deg="161" code="SSE" name="South-southeast"></windDirection><windSpeed mps="4.27" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="15.88" min="15.88" max="15.88"></temperature><feels_like value="14.42" unit="celsius"></feels_like><pressure unit="hPa" value="1019"></pressure><humidity value="93" unit="%"></humidity><clouds value="overcast clouds" all="99" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-15T00:00:00" to="2020-11-15T03:00:00"><symbol number="500" name="light rain" var="10n"></symbol><precipitation probability="0.31" unit="3h" value="0.15" type="rain"></precipitation><windDirection deg="161" code="SSE" name="South-southeast"></windDirection><windSpeed mps="4.18" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="16.16" min="16.16" max="16.16"></temperature><feels_like value="14.68" unit="celsius"></feels_like><pressure unit="hPa" value="1019"></pressure><humidity value="90" unit="%"></humidity><clouds value="overcast clouds" all="100" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-15T03:00:00" to="2020-11-15T06:00:00"><symbol number="500" name="light rain" var="10n"></symbol><precipitation probability="0.8" unit="3h" value="1.29" type="rain"></precipitation><windDirection deg="175" code="S" name="South"></windDirection><windSpeed mps="4.26" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="16.19" min="16.19" max="16.19"></temperature><feels_like value="14.78" unit="celsius"></feels_like><pressure unit="hPa" value="1018"></pressure><humidity value="92" unit="%"></humidity><clouds value="overcast clouds" all="100" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-15T06:00:00" to="2020-11-15T09:00:00"><symbol number="500" name="light rain" var="10d"></symbol><precipitation probability="0.99" unit="3h" value="2.26" type="rain"></precipitation><windDirection deg="181" code="S" name="South"></windDirection><windSpeed mps="4.3" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="16.75" min="16.75" max="16.75"></temperature><feels_like value="15.52" unit="celsius"></feels_like><pressure unit="hPa" value="1020"></pressure><humidity value="92" unit="%"></humidity><clouds value="overcast clouds" all="100" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-15T09:00:00" to="2020-11-15T12:00:00"><symbol number="500" name="light rain" var="10d"></symbol><precipitation probability="1" unit="3h" value="1.35" type="rain"></precipitation><windDirection deg="197" code="SSW" name="South-southwest"></windDirection><windSpeed mps="5.29" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="18.35" min="18.35" max="18.35"></temperature><feels_like value="16.76" unit="celsius"></feels_like><pressure unit="hPa" value="1020"></pressure><humidity value="88" unit="%"></humidity><clouds value="overcast clouds" all="100" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-15T12:00:00" to="2020-11-15T15:00:00"><symbol number="500" name="light rain" var="10d"></symbol><precipitation probability="0.93" unit="3h" value="2.49" type="rain"></precipitation><windDirection deg="227" code="SW" name="Southwest"></windDirection><windSpeed mps="4.2" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="17.82" min="17.82" max="17.82"></temperature><feels_like value="17.06" unit="celsius"></feels_like><pressure unit="hPa" value="1020"></pressure><humidity value="92" unit="%"></humidity><clouds value="overcast clouds" all="100" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-15T15:00:00" to="2020-11-15T18:00:00"><symbol number="500" name="light rain" var="10n"></symbol><precipitation probability="0.85" unit="3h" value="0.58" type="rain"></precipitation><windDirection deg="216" code="SW" name="Southwest"></windDirection><windSpeed mps="2.22" unit="m/s" name="Light breeze"></windSpeed><temperature unit="celsius" value="16.91" min="16.91" max="16.91"></temperature><feels_like value="17.45" unit="celsius"></feels_like><pressure unit="hPa" value="1021"></pressure><humidity value="96" unit="%"></humidity><clouds value="overcast clouds" all="99" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-15T18:00:00" to="2020-11-15T21:00:00"><symbol number="500" name="light rain" var="10n"></symbol><precipitation probability="0.57" unit="3h" value="0.32" type="rain"></precipitation><windDirection deg="177" code="S" name="South"></windDirection><windSpeed mps="0.88" unit="m/s" name="Calm"></windSpeed><temperature unit="celsius" value="16.56" min="16.56" max="16.56"></temperature><feels_like value="17.9" unit="celsius"></feels_like><pressure unit="hPa" value="1023"></pressure><humidity value="96" unit="%"></humidity><clouds value="overcast clouds" all="87" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-15T21:00:00" to="2020-11-16T00:00:00"><symbol number="500" name="light rain" var="10n"></symbol><precipitation probability="0.49" unit="3h" value="0.33" type="rain"></precipitation><windDirection deg="328" code="NNW" name="North-northwest"></windDirection><windSpeed mps="0.18" unit="m/s" name="Setting"></windSpeed><temperature unit="celsius" value="16.19" min="16.19" max="16.19"></temperature><feels_like value="17.82" unit="celsius"></feels_like><pressure unit="hPa" value="1023"></pressure><humidity value="95" unit="%"></humidity><clouds value="overcast clouds" all="93" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-16T00:00:00" to="2020-11-16T03:00:00"><symbol number="804" name="overcast clouds" var="04n"></symbol><precipitation probability="0"></precipitation><windDirection deg="118" code="ESE" name="East-southeast"></windDirection><windSpeed mps="0.71" unit="m/s" name="Calm"></windSpeed><temperature unit="celsius" value="16.17" min="16.17" max="16.17"></temperature><feels_like value="17.48" unit="celsius"></feels_like><pressure unit="hPa" value="1023"></pressure><humidity value="96" unit="%"></humidity><clouds value="overcast clouds" all="100" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-16T03:00:00" to="2020-11-16T06:00:00"><symbol number="500" name="light rain" var="10n"></symbol><precipitation probability="0.2" unit="3h" value="0.12" type="rain"></precipitation><windDirection deg="124" code="SE" name="SouthEast"></windDirection><windSpeed mps="0.86" unit="m/s" name="Calm"></windSpeed><temperature unit="celsius" value="16.25" min="16.25" max="16.25"></temperature><feels_like value="17.43" unit="celsius"></feels_like><pressure unit="hPa" value="1023"></pressure><humidity value="95" unit="%"></humidity><clouds value="overcast clouds" all="99" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-16T06:00:00" to="2020-11-16T09:00:00"><symbol number="804" name="overcast clouds" var="04d"></symbol><precipitation probability="0"></precipitation><windDirection deg="129" code="SE" name="SouthEast"></windDirection><windSpeed mps="1.7" unit="m/s" name="Light breeze"></windSpeed><temperature unit="celsius" value="17.08" min="17.08" max="17.08"></temperature><feels_like value="17.73" unit="celsius"></feels_like><pressure unit="hPa" value="1023"></pressure><humidity value="91" unit="%"></humidity><clouds value="overcast clouds" all="88" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-16T09:00:00" to="2020-11-16T12:00:00"><symbol number="804" name="overcast clouds" var="04d"></symbol><precipitation probability="0"></precipitation><windDirection deg="174" code="S" name="South"></windDirection><windSpeed mps="1.06" unit="m/s" name="Calm"></windSpeed><temperature unit="celsius" value="19.81" min="19.81" max="19.81"></temperature><feels_like value="20.85" unit="celsius"></feels_like><pressure unit="hPa" value="1024"></pressure><humidity value="76" unit="%"></humidity><clouds value="overcast clouds" all="89" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-16T12:00:00" to="2020-11-16T15:00:00"><symbol number="804" name="overcast clouds" var="04d"></symbol><precipitation probability="0"></precipitation><windDirection deg="271" code="W" name="West"></windDirection><windSpeed mps="1.37" unit="m/s" name="Calm"></windSpeed><temperature unit="celsius" value="20.04" min="20.04" max="20.04"></temperature><feels_like value="20.71" unit="celsius"></feels_like><pressure unit="hPa" value="1022"></pressure><humidity value="73" unit="%"></humidity><clouds value="overcast clouds" all="87" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-16T15:00:00" to="2020-11-16T18:00:00"><symbol number="803" name="broken clouds" var="04n"></symbol><precipitation probability="0"></precipitation><windDirection deg="5" code="N" name="North"></windDirection><windSpeed mps="1.5" unit="m/s" name="Calm"></windSpeed><temperature unit="celsius" value="16.52" min="16.52" max="16.52"></temperature><feels_like value="16.98" unit="celsius"></feels_like><pressure unit="hPa" value="1022"></pressure><humidity value="89" unit="%"></humidity><clouds value="broken clouds" all="55" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-16T18:00:00" to="2020-11-16T21:00:00"><symbol number="800" name="clear sky" var="01n"></symbol><precipitation probability="0"></precipitation><windDirection deg="111" code="ESE" name="East-southeast"></windDirection><windSpeed mps="1.63" unit="m/s" name="Light breeze"></windSpeed><temperature unit="celsius" value="16.05" min="16.05" max="16.05"></temperature><feels_like value="16.31" unit="celsius"></feels_like><pressure unit="hPa" value="1023"></pressure><humidity value="90" unit="%"></humidity><clouds value="clear sky" all="2" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-16T21:00:00" to="2020-11-17T00:00:00"><symbol number="800" name="clear sky" var="01n"></symbol><precipitation probability="0"></precipitation><windDirection deg="122" code="ESE" name="East-southeast"></windDirection><windSpeed mps="2.41" unit="m/s" name="Light breeze"></windSpeed><temperature unit="celsius" value="15.77" min="15.77" max="15.77"></temperature><feels_like value="15.27" unit="celsius"></feels_like><pressure unit="hPa" value="1023"></pressure><humidity value="88" unit="%"></humidity><clouds value="clear sky" all="1" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-17T00:00:00" to="2020-11-17T03:00:00"><symbol number="800" name="clear sky" var="01n"></symbol><precipitation probability="0"></precipitation><windDirection deg="141" code="SE" name="SouthEast"></windDirection><windSpeed mps="2.13" unit="m/s" name="Light breeze"></windSpeed><temperature unit="celsius" value="15.27" min="15.27" max="15.27"></temperature><feels_like value="14.75" unit="celsius"></feels_like><pressure unit="hPa" value="1022"></pressure><humidity value="87" unit="%"></humidity><clouds value="clear sky" all="0" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-17T03:00:00" to="2020-11-17T06:00:00"><symbol number="800" name="clear sky" var="01n"></symbol><precipitation probability="0"></precipitation><windDirection deg="146" code="SE" name="SouthEast"></windDirection><windSpeed mps="2.87" unit="m/s" name="Light breeze"></windSpeed><temperature unit="celsius" value="14.8" min="14.8" max="14.8"></temperature><feels_like value="13.67" unit="celsius"></feels_like><pressure unit="hPa" value="1022"></pressure><humidity value="88" unit="%"></humidity><clouds value="clear sky" all="6" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-17T06:00:00" to="2020-11-17T09:00:00"><symbol number="800" name="clear sky" var="01d"></symbol><precipitation probability="0"></precipitation><windDirection deg="151" code="SSE" name="South-southeast"></windDirection><windSpeed mps="2.98" unit="m/s" name="Light breeze"></windSpeed><temperature unit="celsius" value="16.54" min="16.54" max="16.54"></temperature><feels_like value="15.47" unit="celsius"></feels_like><pressure unit="hPa" value="1023"></pressure><humidity value="81" unit="%"></humidity><clouds value="clear sky" all="0" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-17T09:00:00" to="2020-11-17T12:00:00"><symbol number="800" name="clear sky" var="01d"></symbol><precipitation probability="0"></precipitation><windDirection deg="201" code="SSW" name="South-southwest"></windDirection><windSpeed mps="3.49" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="20.36" min="20.36" max="20.36"></temperature><feels_like value="19.11" unit="celsius"></feels_like><pressure unit="hPa" value="1023"></pressure><humidity value="66" unit="%"></humidity><clouds value="clear sky" all="0" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-17T12:00:00" to="2020-11-17T15:00:00"><symbol number="800" name="clear sky" var="01d"></symbol><precipitation probability="0"></precipitation><windDirection deg="228" code="SW" name="Southwest"></windDirection><windSpeed mps="3.78" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="19.58" min="19.58" max="19.58"></temperature><feels_like value="18.11" unit="celsius"></feels_like><pressure unit="hPa" value="1023"></pressure><humidity value="69" unit="%"></humidity><clouds value="clear sky" all="0" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-17T15:00:00" to="2020-11-17T18:00:00"><symbol number="802" name="scattered clouds" var="03n"></symbol><precipitation probability="0"></precipitation><windDirection deg="236" code="SW" name="Southwest"></windDirection><windSpeed mps="1.39" unit="m/s" name="Calm"></windSpeed><temperature unit="celsius" value="16.68" min="16.68" max="16.68"></temperature><feels_like value="17.08" unit="celsius"></feels_like><pressure unit="hPa" value="1024"></pressure><humidity value="86" unit="%"></humidity><clouds value="scattered clouds" all="36" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-17T18:00:00" to="2020-11-17T21:00:00"><symbol number="802" name="scattered clouds" var="03n"></symbol><precipitation probability="0"></precipitation><windDirection deg="113" code="ESE" name="East-southeast"></windDirection><windSpeed mps="0.32" unit="m/s" name="Calm"></windSpeed><temperature unit="celsius" value="15.49" min="15.49" max="15.49"></temperature><feels_like value="16.6" unit="celsius"></feels_like><pressure unit="hPa" value="1026"></pressure><humidity value="92" unit="%"></humidity><clouds value="scattered clouds" all="31" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-17T21:00:00" to="2020-11-18T00:00:00"><symbol number="801" name="few clouds" var="02n"></symbol><precipitation probability="0"></precipitation><windDirection deg="3" code="N" name="North"></windDirection><windSpeed mps="0.89" unit="m/s" name="Calm"></windSpeed><temperature unit="celsius" value="15.36" min="15.36" max="15.36"></temperature><feels_like value="16.08" unit="celsius"></feels_like><pressure unit="hPa" value="1027"></pressure><humidity value="93" unit="%"></humidity><clouds value="few clouds" all="24" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-18T00:00:00" to="2020-11-18T03:00:00"><symbol number="500" name="light rain" var="10n"></symbol><precipitation probability="0.2" unit="3h" value="0.13" type="rain"></precipitation><windDirection deg="0" code="N" name="North"></windDirection><windSpeed mps="3.85" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="15.81" min="15.81" max="15.81"></temperature><feels_like value="14.5" unit="celsius"></feels_like><pressure unit="hPa" value="1027"></pressure><humidity value="91" unit="%"></humidity><clouds value="broken clouds" all="80" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-18T03:00:00" to="2020-11-18T06:00:00"><symbol number="803" name="broken clouds" var="04n"></symbol><precipitation probability="0"></precipitation><windDirection deg="356" code="N" name="North"></windDirection><windSpeed mps="3.49" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="14.58" min="14.58" max="14.58"></temperature><feels_like value="13.11" unit="celsius"></feels_like><pressure unit="hPa" value="1028"></pressure><humidity value="91" unit="%"></humidity><clouds value="broken clouds" all="61" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-18T06:00:00" to="2020-11-18T09:00:00"><symbol number="800" name="clear sky" var="01d"></symbol><precipitation probability="0"></precipitation><windDirection deg="355" code="N" name="North"></windDirection><windSpeed mps="3.59" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="15.75" min="15.75" max="15.75"></temperature><feels_like value="14.3" unit="celsius"></feels_like><pressure unit="hPa" value="1029"></pressure><humidity value="86" unit="%"></humidity><clouds value="clear sky" all="5" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-18T09:00:00" to="2020-11-18T12:00:00"><symbol number="802" name="scattered clouds" var="03d"></symbol><precipitation probability="0"></precipitation><windDirection deg="335" code="NNW" name="North-northwest"></windDirection><windSpeed mps="4.55" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="17.5" min="17.5" max="17.5"></temperature><feels_like value="15.32" unit="celsius"></feels_like><pressure unit="hPa" value="1030"></pressure><humidity value="76" unit="%"></humidity><clouds value="scattered clouds" all="30" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-18T12:00:00" to="2020-11-18T15:00:00"><symbol number="804" name="overcast clouds" var="04d"></symbol><precipitation probability="0"></precipitation><windDirection deg="335" code="NNW" name="North-northwest"></windDirection><windSpeed mps="5.42" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="16.16" min="16.16" max="16.16"></temperature><feels_like value="13.08" unit="celsius"></feels_like><pressure unit="hPa" value="1028"></pressure><humidity value="78" unit="%"></humidity><clouds value="overcast clouds" all="97" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-18T15:00:00" to="2020-11-18T18:00:00"><symbol number="803" name="broken clouds" var="04n"></symbol><precipitation probability="0"></precipitation><windDirection deg="348" code="NNW" name="North-northwest"></windDirection><windSpeed mps="4.46" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="13.71" min="13.71" max="13.71"></temperature><feels_like value="11.08" unit="celsius"></feels_like><pressure unit="hPa" value="1029"></pressure><humidity value="87" unit="%"></humidity><clouds value="broken clouds" all="74" unit="%"></clouds><visibility value="10000"></visibility></time><time from="2020-11-18T18:00:00" to="2020-11-18T21:00:00"><symbol number="800" name="clear sky" var="01n"></symbol><precipitation probability="0"></precipitation><windDirection deg="346" code="NNW" name="North-northwest"></windDirection><windSpeed mps="3.47" unit="m/s" name="Gentle Breeze"></windSpeed><temperature unit="celsius" value="13.38" min="13.38" max="13.38"></temperature><feels_like value="11.45" unit="celsius"></feels_like><pressure unit="hPa" value="1030"></pressure><humidity value="89" unit="%"></humidity><clouds value="clear sky" all="0" unit="%"></clouds><visibility value="10000"></visibility></time></forecast></weatherdata>
+<weatherdata>
+    <location>
+        <name>Aveiro</name>
+        <type></type>
+        <country>PT</country>
+        <timezone>0</timezone>
+        <location altitude="0" latitude="40.6443" longitude="-8.6455" geobase="geonames" geobaseid="2742611"></location>
+    </location>
+    <credit></credit>
+    <meta>
+        <lastupdate></lastupdate>
+        <calctime>0</calctime>
+        <nextupdate></nextupdate>
+    </meta>
+    <sun rise="2020-11-13T07:19:22" set="2020-11-13T17:18:40"></sun>
+    <forecast>
+        <time from="2020-11-13T21:00:00" to="2020-11-14T00:00:00">
+            <symbol number="803" name="broken clouds" var="04n"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="131" code="SE" name="SouthEast"></windDirection>
+            <windSpeed mps="3.85" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="13.9" min="13.9" max="13.92"></temperature>
+            <feels_like value="11.49" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1019"></pressure>
+            <humidity value="82" unit="%"></humidity>
+            <clouds value="broken clouds" all="83" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-14T00:00:00" to="2020-11-14T03:00:00">
+            <symbol number="802" name="scattered clouds" var="03n"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="140" code="SE" name="SouthEast"></windDirection>
+            <windSpeed mps="4.29" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="13.8" min="13.77" max="13.8"></temperature>
+            <feels_like value="11.01" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1018"></pressure>
+            <humidity value="81" unit="%"></humidity>
+            <clouds value="scattered clouds" all="46" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-14T03:00:00" to="2020-11-14T06:00:00">
+            <symbol number="802" name="scattered clouds" var="03n"></symbol>
+            <precipitation probability="0.09"></precipitation>
+            <windDirection deg="141" code="SE" name="SouthEast"></windDirection>
+            <windSpeed mps="4.42" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="14.54" min="14.54" max="14.58"></temperature>
+            <feels_like value="11.81" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1017"></pressure>
+            <humidity value="80" unit="%"></humidity>
+            <clouds value="scattered clouds" all="42" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-14T06:00:00" to="2020-11-14T09:00:00">
+            <symbol number="500" name="light rain" var="10d"></symbol>
+            <precipitation probability="0.66" unit="3h" value="0.73" type="rain"></precipitation>
+            <windDirection deg="139" code="SE" name="SouthEast"></windDirection>
+            <windSpeed mps="4.7" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="15.08" min="15.08" max="15.09"></temperature>
+            <feels_like value="12.48" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1018"></pressure>
+            <humidity value="83" unit="%"></humidity>
+            <clouds value="overcast clouds" all="85" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-14T09:00:00" to="2020-11-14T12:00:00">
+            <symbol number="500" name="light rain" var="10d"></symbol>
+            <precipitation probability="0.46" unit="3h" value="0.16" type="rain"></precipitation>
+            <windDirection deg="160" code="SSE" name="South-southeast"></windDirection>
+            <windSpeed mps="4.54" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="17.74" min="17.74" max="17.74"></temperature>
+            <feels_like value="15.64" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1017"></pressure>
+            <humidity value="76" unit="%"></humidity>
+            <clouds value="overcast clouds" all="91" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-14T12:00:00" to="2020-11-14T15:00:00">
+            <symbol number="500" name="light rain" var="10d"></symbol>
+            <precipitation probability="0.54" unit="3h" value="0.3" type="rain"></precipitation>
+            <windDirection deg="184" code="S" name="South"></windDirection>
+            <windSpeed mps="4.58" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="18.7" min="18.7" max="18.7"></temperature>
+            <feels_like value="16.96" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1017"></pressure>
+            <humidity value="77" unit="%"></humidity>
+            <clouds value="overcast clouds" all="92" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-14T15:00:00" to="2020-11-14T18:00:00">
+            <symbol number="500" name="light rain" var="10n"></symbol>
+            <precipitation probability="0.66" unit="3h" value="0.68" type="rain"></precipitation>
+            <windDirection deg="218" code="SW" name="Southwest"></windDirection>
+            <windSpeed mps="2.91" unit="m/s" name="Light breeze"></windSpeed>
+            <temperature unit="celsius" value="16.04" min="16.04" max="16.04"></temperature>
+            <feels_like value="15.65" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1018"></pressure>
+            <humidity value="94" unit="%"></humidity>
+            <clouds value="broken clouds" all="69" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-14T18:00:00" to="2020-11-14T21:00:00">
+            <symbol number="500" name="light rain" var="10n"></symbol>
+            <precipitation probability="0.36" unit="3h" value="0.32" type="rain"></precipitation>
+            <windDirection deg="177" code="S" name="South"></windDirection>
+            <windSpeed mps="3.21" unit="m/s" name="Light breeze"></windSpeed>
+            <temperature unit="celsius" value="15.75" min="15.75" max="15.75"></temperature>
+            <feels_like value="15.04" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1019"></pressure>
+            <humidity value="94" unit="%"></humidity>
+            <clouds value="overcast clouds" all="98" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-14T21:00:00" to="2020-11-15T00:00:00">
+            <symbol number="804" name="overcast clouds" var="04n"></symbol>
+            <precipitation probability="0.23"></precipitation>
+            <windDirection deg="161" code="SSE" name="South-southeast"></windDirection>
+            <windSpeed mps="4.27" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="15.88" min="15.88" max="15.88"></temperature>
+            <feels_like value="14.42" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1019"></pressure>
+            <humidity value="93" unit="%"></humidity>
+            <clouds value="overcast clouds" all="99" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-15T00:00:00" to="2020-11-15T03:00:00">
+            <symbol number="500" name="light rain" var="10n"></symbol>
+            <precipitation probability="0.31" unit="3h" value="0.15" type="rain"></precipitation>
+            <windDirection deg="161" code="SSE" name="South-southeast"></windDirection>
+            <windSpeed mps="4.18" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="16.16" min="16.16" max="16.16"></temperature>
+            <feels_like value="14.68" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1019"></pressure>
+            <humidity value="90" unit="%"></humidity>
+            <clouds value="overcast clouds" all="100" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-15T03:00:00" to="2020-11-15T06:00:00">
+            <symbol number="500" name="light rain" var="10n"></symbol>
+            <precipitation probability="0.8" unit="3h" value="1.29" type="rain"></precipitation>
+            <windDirection deg="175" code="S" name="South"></windDirection>
+            <windSpeed mps="4.26" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="16.19" min="16.19" max="16.19"></temperature>
+            <feels_like value="14.78" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1018"></pressure>
+            <humidity value="92" unit="%"></humidity>
+            <clouds value="overcast clouds" all="100" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-15T06:00:00" to="2020-11-15T09:00:00">
+            <symbol number="500" name="light rain" var="10d"></symbol>
+            <precipitation probability="0.99" unit="3h" value="2.26" type="rain"></precipitation>
+            <windDirection deg="181" code="S" name="South"></windDirection>
+            <windSpeed mps="4.3" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="16.75" min="16.75" max="16.75"></temperature>
+            <feels_like value="15.52" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1020"></pressure>
+            <humidity value="92" unit="%"></humidity>
+            <clouds value="overcast clouds" all="100" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-15T09:00:00" to="2020-11-15T12:00:00">
+            <symbol number="500" name="light rain" var="10d"></symbol>
+            <precipitation probability="1" unit="3h" value="1.35" type="rain"></precipitation>
+            <windDirection deg="197" code="SSW" name="South-southwest"></windDirection>
+            <windSpeed mps="5.29" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="18.35" min="18.35" max="18.35"></temperature>
+            <feels_like value="16.76" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1020"></pressure>
+            <humidity value="88" unit="%"></humidity>
+            <clouds value="overcast clouds" all="100" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-15T12:00:00" to="2020-11-15T15:00:00">
+            <symbol number="500" name="light rain" var="10d"></symbol>
+            <precipitation probability="0.93" unit="3h" value="2.49" type="rain"></precipitation>
+            <windDirection deg="227" code="SW" name="Southwest"></windDirection>
+            <windSpeed mps="4.2" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="17.82" min="17.82" max="17.82"></temperature>
+            <feels_like value="17.06" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1020"></pressure>
+            <humidity value="92" unit="%"></humidity>
+            <clouds value="overcast clouds" all="100" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-15T15:00:00" to="2020-11-15T18:00:00">
+            <symbol number="500" name="light rain" var="10n"></symbol>
+            <precipitation probability="0.85" unit="3h" value="0.58" type="rain"></precipitation>
+            <windDirection deg="216" code="SW" name="Southwest"></windDirection>
+            <windSpeed mps="2.22" unit="m/s" name="Light breeze"></windSpeed>
+            <temperature unit="celsius" value="16.91" min="16.91" max="16.91"></temperature>
+            <feels_like value="17.45" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1021"></pressure>
+            <humidity value="96" unit="%"></humidity>
+            <clouds value="overcast clouds" all="99" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-15T18:00:00" to="2020-11-15T21:00:00">
+            <symbol number="500" name="light rain" var="10n"></symbol>
+            <precipitation probability="0.57" unit="3h" value="0.32" type="rain"></precipitation>
+            <windDirection deg="177" code="S" name="South"></windDirection>
+            <windSpeed mps="0.88" unit="m/s" name="Calm"></windSpeed>
+            <temperature unit="celsius" value="16.56" min="16.56" max="16.56"></temperature>
+            <feels_like value="17.9" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1023"></pressure>
+            <humidity value="96" unit="%"></humidity>
+            <clouds value="overcast clouds" all="87" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-15T21:00:00" to="2020-11-16T00:00:00">
+            <symbol number="500" name="light rain" var="10n"></symbol>
+            <precipitation probability="0.49" unit="3h" value="0.33" type="rain"></precipitation>
+            <windDirection deg="328" code="NNW" name="North-northwest"></windDirection>
+            <windSpeed mps="0.18" unit="m/s" name="Setting"></windSpeed>
+            <temperature unit="celsius" value="16.19" min="16.19" max="16.19"></temperature>
+            <feels_like value="17.82" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1023"></pressure>
+            <humidity value="95" unit="%"></humidity>
+            <clouds value="overcast clouds" all="93" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-16T00:00:00" to="2020-11-16T03:00:00">
+            <symbol number="804" name="overcast clouds" var="04n"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="118" code="ESE" name="East-southeast"></windDirection>
+            <windSpeed mps="0.71" unit="m/s" name="Calm"></windSpeed>
+            <temperature unit="celsius" value="16.17" min="16.17" max="16.17"></temperature>
+            <feels_like value="17.48" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1023"></pressure>
+            <humidity value="96" unit="%"></humidity>
+            <clouds value="overcast clouds" all="100" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-16T03:00:00" to="2020-11-16T06:00:00">
+            <symbol number="500" name="light rain" var="10n"></symbol>
+            <precipitation probability="0.2" unit="3h" value="0.12" type="rain"></precipitation>
+            <windDirection deg="124" code="SE" name="SouthEast"></windDirection>
+            <windSpeed mps="0.86" unit="m/s" name="Calm"></windSpeed>
+            <temperature unit="celsius" value="16.25" min="16.25" max="16.25"></temperature>
+            <feels_like value="17.43" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1023"></pressure>
+            <humidity value="95" unit="%"></humidity>
+            <clouds value="overcast clouds" all="99" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-16T06:00:00" to="2020-11-16T09:00:00">
+            <symbol number="804" name="overcast clouds" var="04d"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="129" code="SE" name="SouthEast"></windDirection>
+            <windSpeed mps="1.7" unit="m/s" name="Light breeze"></windSpeed>
+            <temperature unit="celsius" value="17.08" min="17.08" max="17.08"></temperature>
+            <feels_like value="17.73" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1023"></pressure>
+            <humidity value="91" unit="%"></humidity>
+            <clouds value="overcast clouds" all="88" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-16T09:00:00" to="2020-11-16T12:00:00">
+            <symbol number="804" name="overcast clouds" var="04d"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="174" code="S" name="South"></windDirection>
+            <windSpeed mps="1.06" unit="m/s" name="Calm"></windSpeed>
+            <temperature unit="celsius" value="19.81" min="19.81" max="19.81"></temperature>
+            <feels_like value="20.85" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1024"></pressure>
+            <humidity value="76" unit="%"></humidity>
+            <clouds value="overcast clouds" all="89" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-16T12:00:00" to="2020-11-16T15:00:00">
+            <symbol number="804" name="overcast clouds" var="04d"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="271" code="W" name="West"></windDirection>
+            <windSpeed mps="1.37" unit="m/s" name="Calm"></windSpeed>
+            <temperature unit="celsius" value="20.04" min="20.04" max="20.04"></temperature>
+            <feels_like value="20.71" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1022"></pressure>
+            <humidity value="73" unit="%"></humidity>
+            <clouds value="overcast clouds" all="87" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-16T15:00:00" to="2020-11-16T18:00:00">
+            <symbol number="803" name="broken clouds" var="04n"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="5" code="N" name="North"></windDirection>
+            <windSpeed mps="1.5" unit="m/s" name="Calm"></windSpeed>
+            <temperature unit="celsius" value="16.52" min="16.52" max="16.52"></temperature>
+            <feels_like value="16.98" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1022"></pressure>
+            <humidity value="89" unit="%"></humidity>
+            <clouds value="broken clouds" all="55" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-16T18:00:00" to="2020-11-16T21:00:00">
+            <symbol number="800" name="clear sky" var="01n"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="111" code="ESE" name="East-southeast"></windDirection>
+            <windSpeed mps="1.63" unit="m/s" name="Light breeze"></windSpeed>
+            <temperature unit="celsius" value="16.05" min="16.05" max="16.05"></temperature>
+            <feels_like value="16.31" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1023"></pressure>
+            <humidity value="90" unit="%"></humidity>
+            <clouds value="clear sky" all="2" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-16T21:00:00" to="2020-11-17T00:00:00">
+            <symbol number="800" name="clear sky" var="01n"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="122" code="ESE" name="East-southeast"></windDirection>
+            <windSpeed mps="2.41" unit="m/s" name="Light breeze"></windSpeed>
+            <temperature unit="celsius" value="15.77" min="15.77" max="15.77"></temperature>
+            <feels_like value="15.27" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1023"></pressure>
+            <humidity value="88" unit="%"></humidity>
+            <clouds value="clear sky" all="1" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-17T00:00:00" to="2020-11-17T03:00:00">
+            <symbol number="800" name="clear sky" var="01n"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="141" code="SE" name="SouthEast"></windDirection>
+            <windSpeed mps="2.13" unit="m/s" name="Light breeze"></windSpeed>
+            <temperature unit="celsius" value="15.27" min="15.27" max="15.27"></temperature>
+            <feels_like value="14.75" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1022"></pressure>
+            <humidity value="87" unit="%"></humidity>
+            <clouds value="clear sky" all="0" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-17T03:00:00" to="2020-11-17T06:00:00">
+            <symbol number="800" name="clear sky" var="01n"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="146" code="SE" name="SouthEast"></windDirection>
+            <windSpeed mps="2.87" unit="m/s" name="Light breeze"></windSpeed>
+            <temperature unit="celsius" value="14.8" min="14.8" max="14.8"></temperature>
+            <feels_like value="13.67" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1022"></pressure>
+            <humidity value="88" unit="%"></humidity>
+            <clouds value="clear sky" all="6" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-17T06:00:00" to="2020-11-17T09:00:00">
+            <symbol number="800" name="clear sky" var="01d"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="151" code="SSE" name="South-southeast"></windDirection>
+            <windSpeed mps="2.98" unit="m/s" name="Light breeze"></windSpeed>
+            <temperature unit="celsius" value="16.54" min="16.54" max="16.54"></temperature>
+            <feels_like value="15.47" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1023"></pressure>
+            <humidity value="81" unit="%"></humidity>
+            <clouds value="clear sky" all="0" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-17T09:00:00" to="2020-11-17T12:00:00">
+            <symbol number="800" name="clear sky" var="01d"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="201" code="SSW" name="South-southwest"></windDirection>
+            <windSpeed mps="3.49" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="20.36" min="20.36" max="20.36"></temperature>
+            <feels_like value="19.11" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1023"></pressure>
+            <humidity value="66" unit="%"></humidity>
+            <clouds value="clear sky" all="0" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-17T12:00:00" to="2020-11-17T15:00:00">
+            <symbol number="800" name="clear sky" var="01d"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="228" code="SW" name="Southwest"></windDirection>
+            <windSpeed mps="3.78" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="19.58" min="19.58" max="19.58"></temperature>
+            <feels_like value="18.11" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1023"></pressure>
+            <humidity value="69" unit="%"></humidity>
+            <clouds value="clear sky" all="0" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-17T15:00:00" to="2020-11-17T18:00:00">
+            <symbol number="802" name="scattered clouds" var="03n"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="236" code="SW" name="Southwest"></windDirection>
+            <windSpeed mps="1.39" unit="m/s" name="Calm"></windSpeed>
+            <temperature unit="celsius" value="16.68" min="16.68" max="16.68"></temperature>
+            <feels_like value="17.08" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1024"></pressure>
+            <humidity value="86" unit="%"></humidity>
+            <clouds value="scattered clouds" all="36" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-17T18:00:00" to="2020-11-17T21:00:00">
+            <symbol number="802" name="scattered clouds" var="03n"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="113" code="ESE" name="East-southeast"></windDirection>
+            <windSpeed mps="0.32" unit="m/s" name="Calm"></windSpeed>
+            <temperature unit="celsius" value="15.49" min="15.49" max="15.49"></temperature>
+            <feels_like value="16.6" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1026"></pressure>
+            <humidity value="92" unit="%"></humidity>
+            <clouds value="scattered clouds" all="31" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-17T21:00:00" to="2020-11-18T00:00:00">
+            <symbol number="801" name="few clouds" var="02n"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="3" code="N" name="North"></windDirection>
+            <windSpeed mps="0.89" unit="m/s" name="Calm"></windSpeed>
+            <temperature unit="celsius" value="15.36" min="15.36" max="15.36"></temperature>
+            <feels_like value="16.08" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1027"></pressure>
+            <humidity value="93" unit="%"></humidity>
+            <clouds value="few clouds" all="24" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-18T00:00:00" to="2020-11-18T03:00:00">
+            <symbol number="500" name="light rain" var="10n"></symbol>
+            <precipitation probability="0.2" unit="3h" value="0.13" type="rain"></precipitation>
+            <windDirection deg="0" code="N" name="North"></windDirection>
+            <windSpeed mps="3.85" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="15.81" min="15.81" max="15.81"></temperature>
+            <feels_like value="14.5" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1027"></pressure>
+            <humidity value="91" unit="%"></humidity>
+            <clouds value="broken clouds" all="80" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-18T03:00:00" to="2020-11-18T06:00:00">
+            <symbol number="803" name="broken clouds" var="04n"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="356" code="N" name="North"></windDirection>
+            <windSpeed mps="3.49" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="14.58" min="14.58" max="14.58"></temperature>
+            <feels_like value="13.11" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1028"></pressure>
+            <humidity value="91" unit="%"></humidity>
+            <clouds value="broken clouds" all="61" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-18T06:00:00" to="2020-11-18T09:00:00">
+            <symbol number="800" name="clear sky" var="01d"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="355" code="N" name="North"></windDirection>
+            <windSpeed mps="3.59" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="15.75" min="15.75" max="15.75"></temperature>
+            <feels_like value="14.3" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1029"></pressure>
+            <humidity value="86" unit="%"></humidity>
+            <clouds value="clear sky" all="5" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-18T09:00:00" to="2020-11-18T12:00:00">
+            <symbol number="802" name="scattered clouds" var="03d"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="335" code="NNW" name="North-northwest"></windDirection>
+            <windSpeed mps="4.55" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="17.5" min="17.5" max="17.5"></temperature>
+            <feels_like value="15.32" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1030"></pressure>
+            <humidity value="76" unit="%"></humidity>
+            <clouds value="scattered clouds" all="30" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-18T12:00:00" to="2020-11-18T15:00:00">
+            <symbol number="804" name="overcast clouds" var="04d"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="335" code="NNW" name="North-northwest"></windDirection>
+            <windSpeed mps="5.42" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="16.16" min="16.16" max="16.16"></temperature>
+            <feels_like value="13.08" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1028"></pressure>
+            <humidity value="78" unit="%"></humidity>
+            <clouds value="overcast clouds" all="97" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-18T15:00:00" to="2020-11-18T18:00:00">
+            <symbol number="803" name="broken clouds" var="04n"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="348" code="NNW" name="North-northwest"></windDirection>
+            <windSpeed mps="4.46" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="13.71" min="13.71" max="13.71"></temperature>
+            <feels_like value="11.08" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1029"></pressure>
+            <humidity value="87" unit="%"></humidity>
+            <clouds value="broken clouds" all="74" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+        <time from="2020-11-18T18:00:00" to="2020-11-18T21:00:00">
+            <symbol number="800" name="clear sky" var="01n"></symbol>
+            <precipitation probability="0"></precipitation>
+            <windDirection deg="346" code="NNW" name="North-northwest"></windDirection>
+            <windSpeed mps="3.47" unit="m/s" name="Gentle Breeze"></windSpeed>
+            <temperature unit="celsius" value="13.38" min="13.38" max="13.38"></temperature>
+            <feels_like value="11.45" unit="celsius"></feels_like>
+            <pressure unit="hPa" value="1030"></pressure>
+            <humidity value="89" unit="%"></humidity>
+            <clouds value="clear sky" all="0" unit="%"></clouds>
+            <visibility value="10000"></visibility>
+        </time>
+    </forecast>
+</weatherdata>
