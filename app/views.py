@@ -3,6 +3,7 @@ from django.shortcuts import render
 from datetime import datetime
 from BaseXClient import BaseXClient
 import xmltodict
+import requests
 
 # URL to Weather XML:
 # http://api.openweathermap.org/data/2.5/forecast?id=2742611&units=metric&mode=xml&APPID=d0279fea67692adea0e260e4cf86d072
@@ -19,7 +20,7 @@ def home(request):
     else:
         location_str = 'Aveiro'
     location_id = local_id(location_str)
-    # TODO f1 get xml from db and location_id
+    # TODO f1 get xml from db and location_str
     # TODO f2 function to get data structure from xml
     # TODO f3 tparams getting info from data_dict
     tparams = {
@@ -40,13 +41,31 @@ def home(request):
     return render(request, 'index.html', tparams)
 
 
-def db_to_xml(db_name: str, id: int):
-    '''
+def api_call(city_id: int, key: str = 'd0279fea67692adea0e260e4cf86d072'):
+    """
+
+    :param city_id:
+    :param key: api key
+    :return: TODO best form of data provided that we need to store in db afterwards
+    """
+
+    # http://api.openweathermap.org/data/2.5/forecast?id=2742611&units=metric&mode=xml&APPID=d0279fea67692adea0e260e4cf86d072
+    url = f"http://api.openweathermap.org/data/2.5/forecast?id={city_id}&units=metric&mode=xml&APPID={key}"
+
+    request = requests.get(url=url)
+    assert request.status_code == 200, f"Request error! Status {request.status_code}"
+
+    xml = request.content.decode(request.encoding)
+    return xml
+
+
+def db_to_xml(db_name: str, city_str: str):
+    """
     TODO f1
     :param db_name: name of database containing the data
-    :param id: identification of the city
+    :param city_str: identification of the city
     :return: xml with city's weather info
-    '''
+    """
 
     session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
     try:
@@ -59,11 +78,11 @@ def db_to_xml(db_name: str, id: int):
 
 
 def data_dict(xml):
-    '''
+    """
     TODO f2: this function
-    :param xml:
+    :param xml: xml with weather data of the city
     :return: dict with weather parameters (same format of tparams)
-    '''
+    """
     d = xmltodict.parse(xml)
     # TODO d is an OrderedDict, we may need to change to a simple dict
     return d
