@@ -30,8 +30,7 @@ def home(request):
         location_str = 'Aveiro'
     location_id = local_id(location_str)
     # TODO f1 get xml from db and location_str
-    # TODO f2 function to get data structure from xml
-    # TODO f3 tparams getting info from data_dict
+    # TODO tparams getting info from data_dict
     tparams = {
         'title': f'Meteorologia - {datetime.now().day}/{datetime.now().month}',
         'year': datetime.now().year,
@@ -88,7 +87,6 @@ def db_to_xml(db_name: str, city_str: str):
 
 def data_dict(xml):
     """
-    TODO f2: this function
     :param xml: xml with weather data of the city
     :return: dict with weather parameters (same format of tparams)
     """
@@ -99,7 +97,6 @@ def data_dict(xml):
 
 def local_id(str):
     '''
-    TODO f4: translate using city.list.json
     :param str: string with the name of the city
     :return: int being the id of the input city
     '''
