@@ -55,7 +55,7 @@ def api_call(city_id: int, key: str = 'd0279fea67692adea0e260e4cf86d072'):
 
     :param city_id:
     :param key: api key
-    :return: TODO best form of data provided that we need to store in db afterwards
+    :return:
     """
 
     # http://api.openweathermap.org/data/2.5/forecast?id=2742611&units=metric&mode=xml&APPID=d0279fea67692adea0e260e4cf86d072
