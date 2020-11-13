@@ -1,9 +1,9 @@
 from django.contrib import messages
 from django.shortcuts import render
 from datetime import datetime
+from app import basex_actions
 import json
 import edc_tp1.settings
-from BaseXClient import BaseXClient
 import xmltodict
 import requests
 
@@ -29,7 +29,8 @@ def home(request):
     else:
         location_str = 'Aveiro'
     location_id = local_id(location_str)
-    # TODO f1 get xml from db and location_str
+    # TODO create db
+    # TODO f1 basex_actions.db_to_xml to get xml from db name and location_str
     # TODO tparams getting info from data_dict
     tparams = {
         'title': f'Meteorologia - {datetime.now().day}/{datetime.now().month}',
@@ -64,24 +65,6 @@ def api_call(city_id: int, key: str = 'd0279fea67692adea0e260e4cf86d072'):
     assert request.status_code == 200, f"Request error! Status {request.status_code}"
 
     xml = request.content.decode(request.encoding)
-    return xml
-
-
-def db_to_xml(db_name: str, city_str: str):
-    """
-    TODO f1
-    :param db_name: name of database containing the data
-    :param city_str: identification of the city
-    :return: xml with city's weather info
-    """
-
-    session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
-    try:
-        xml = session.execute("xquery collection('{}')".format(db_name))
-        # TODO filter data to get requested city's weather parameters
-    finally:
-        session.close()
-
     return xml
 
 
