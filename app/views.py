@@ -28,7 +28,7 @@ def home(request):
             location_str = 'Aveiro'
     else:
         location_str = 'Aveiro'
-    location_id = local_id(location_str)
+    location_str, location_id = local_id(location_str)
     # TODO create db
     # TODO f1 basex_actions.db_to_xml to get xml from db name and location_str
     # TODO tparams getting info from data_dict
@@ -87,4 +87,4 @@ def local_id(str):
         city_name = "Lisbon"
     else:
         city_name = str
-    return cities.get(city_name, 8010417)
+    return (city_name, cities.get(city_name, 8010417))
