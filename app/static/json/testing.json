@@ -1,0 +1,42 @@
+[
+    {
+        "id": 2742611,
+        "name": "Aveiro",
+        "state": "",
+        "country": "PT",
+        "coord": {
+            "lon": -8.64554,
+            "lat": 40.644272
+        }
+    },
+    {
+        "id": 6458924,
+        "name": "Porto",
+        "state": "",
+        "country": "PT",
+        "coord": {
+            "lon": -8.62672,
+            "lat": 41.15556
+        }
+    },
+    {
+        "id": 2740637,
+        "name": "Coimbra",
+        "state": "",
+        "country": "PT",
+        "coord": {
+            "lon": -8.41955,
+            "lat": 40.205639
+        }
+    },
+    {
+        "id": 6458923,
+        "name": "Lisboa",
+        "state": "",
+        "country": "PT",
+        "coord": {
+            "lon": -9.14843,
+            "lat": 38.726349
+        }
+    }
+]

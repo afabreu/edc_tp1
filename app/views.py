@@ -83,9 +83,9 @@ def api_call(city_id: int, key: str = 'd0279fea67692adea0e260e4cf86d072'):
         print("Invalid XML file")
 
 def database():
-    session.execute("check 5DayForecast")
+    session.execute("check FiveDayForecast")
 
-    db_root = etree.Element("5DayForecast")
+    db_root = etree.Element("FiveDayForecast")
     for city in cities.values():
         root = api_call(city)
         db_root.append(root)
