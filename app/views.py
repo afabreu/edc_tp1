@@ -2,6 +2,8 @@ from django.contrib import messages
 from django.shortcuts import render
 from datetime import datetime
 from app import basex_actions
+from lxml import etree
+from BaseXClient import BaseXClient
 import json
 import edc_tp1.settings
 import xmltodict
@@ -11,6 +13,8 @@ import requests
 # http://api.openweathermap.org/data/2.5/forecast?id=2742611&units=metric&mode=xml&APPID=d0279fea67692adea0e260e4cf86d072
 
 # Create your views here.
+
+session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
 
 cities = {}
 
@@ -30,6 +34,7 @@ def home(request):
         location_str = 'Aveiro'
     location_str, location_id = local_id(location_str)
     # TODO create db
+    database()
     # TODO f1 basex_actions.db_to_xml to get xml from db name and location_str
     # TODO tparams getting info from data_dict
     tparams = {
@@ -65,7 +70,27 @@ def api_call(city_id: int, key: str = 'd0279fea67692adea0e260e4cf86d072'):
     assert request.status_code == 200, f"Request error! Status {request.status_code}"
 
     xml = request.content.decode(request.encoding)
-    return xml
+
+    with open(f"{edc_tp1.settings.XML_URL}tmp.xml", "w+") as xml_file:
+        xml_file.write(xml)
+    xml_root = etree.parse(f"{edc_tp1.settings.XML_URL}tmp.xml")
+    xsd_root = etree.parse(f"{edc_tp1.settings.XML_URL}forecast.xsd")
+    xsd = etree.XMLSchema(xsd_root)
+
+    if xsd.validate(xml_root):
+        return xml_root.getroot()
+    else:
+        print("Invalid XML file")
+
+def database():
+    session.execute("check 5DayForecast")
+
+    db_root = etree.Element("5DayForecast")
+    for city in cities.values():
+        root = api_call(city)
+        db_root.append(root)
+
+    session.add("5DayForecast.xml", etree.tostring(db_root).decode("utf-8"))
 
 
 def data_dict(xml):
