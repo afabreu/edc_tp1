@@ -78,13 +78,12 @@ def data_dict(xml):
     return d
 
 
-def local_id(str):
+def local_id(city_name):
     '''
-    :param str: string with the name of the city
-    :return: int being the id of the input city
+    :param city_name: string with the name of the city
+    :return: tuple of string and int, being the string the name of the city and int the id of the input city
     '''
-    if str == "Lisboa":
-        city_name = "Lisbon"
-    else:
-        city_name = str
-    return (city_name, cities.get(city_name, 8010417))
+    city_id = cities.get(city_name, 8010417)
+    if city_id == 8010417:
+        return "Aveiro", city_id
+    return city_name, city_id
