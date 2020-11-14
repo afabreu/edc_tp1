@@ -55,7 +55,7 @@ def home(request):
     return render(request, 'index.html', tparams)
 
 
-def api_call(city_id: int, key: str = 'd0279fea67692adea0e260e4cf86d072'):
+def api_call(city_id: int, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774'): #d0279fea67692adea0e260e4cf86d072
     """
 
     :param city_id:
@@ -81,6 +81,7 @@ def api_call(city_id: int, key: str = 'd0279fea67692adea0e260e4cf86d072'):
         return xml_root.getroot()
     else:
         print("Invalid XML file")
+
 
 def database():
     session.execute("check FiveDayForecast")
