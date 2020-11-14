@@ -120,4 +120,5 @@ USE_TZ = True
 STATIC_URL = os.path.join(BASE_DIR, 'app/static/')
 XML_URL = os.path.join(STATIC_URL, 'xml/')
 CITIES_JSON = os.path.join(STATIC_URL, 'json/cities_pt.json')
+TESTING_JSON = os.path.join(STATIC_URL, 'json/testing.json')
 
