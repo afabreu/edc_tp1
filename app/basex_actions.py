@@ -1,8 +1,9 @@
 from BaseXClient import BaseXClient
 from lxml import etree
-from datetime import timedelta
 import xmltodict
-from datetime import datetime, timedelta
+from datetime import datetime
+import requests
+import edc_tp1.settings
 
 
 def db_to_xml(city_name: str,
@@ -22,14 +23,12 @@ def db_to_xml(city_name: str,
 
     session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
     try:
-        # TODO check if city is in db
-        ...
 
-        # if so Select city
         city_xml = session.execute("xquery collection('{}')//weatherdata[location/name='{}']"
                                    .format(db_name, city_name))
-        # TODO if not, call from api and add to db
-        ...
+        # TODO if city does not exist, call from api and add to db
+        if city_xml == "":
+            add_city_to_db(city_name)
 
         # Parse xml to dict
         city_dict = xmltodict.parse(city_xml)
@@ -58,7 +57,71 @@ def db_to_xml(city_name: str,
 
     assert info != {}, "Info should not be empty: Date was not found"
 
-    # TODO Transform info to give only the necessary info (same as views.tparams)
-
     return info
+
+
+def add_city_to_db(city, base_name: str = "FiveDayForecast"):
+
+    session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
+
+    try:
+        session.execute(f"open {base_name}")
+    except IOError:
+        session.execute(f"create db {base_name}")
+
+    finally:
+        db_root = etree.Element(base_name)
+        root = api_call(city, to_string=False)
+        # TODO delete next line and implement same action through xupdate
+        db_root.append(root)
+
+        session.add(f"{base_name}.xml", etree.tostring(db_root).decode("utf-8"))
+        session.close()
+
+
+def api_call(city_id: int, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774',
+             to_string: bool = False):  # d0279fea67692adea0e260e4cf86d072
+    """
+
+    :param city_id:
+    :param key: api key
+    :param to_string: if true, returns xml in string form. if not, in etree.Element root form
+    :return:
+    """
+
+    # http://api.openweathermap.org/data/2.5/forecast?id=2742611&units=metric&mode=xml&APPID=13bb9df7b5a4c16cbd2a2167bcfc7774
+    url = f"http://api.openweathermap.org/data/2.5/forecast?id={city_id}&units=metric&mode=xml&APPID={key}"
+
+    request = requests.get(url=url)
+    assert request.status_code == 200, f"Request error! Status {request.status_code}"
+
+    xml = request.content.decode(request.encoding)
+
+    xml_root = validate(xml)
+
+    if to_string:
+        return xml
+    else:
+        return xml_root
+
+
+def validate(xml: str) -> etree.Element:
+    """
+
+    :param xml:
+    :return:
+    """
+    # Create tmp.xml file
+    with open(f"{edc_tp1.settings.XML_URL}tmp.xml", "w+") as xml_file:
+        xml_file.write(xml)
+    xml_root = etree.parse(f"{edc_tp1.settings.XML_URL}tmp.xml")
+    xsd_root = etree.parse(f"{edc_tp1.settings.XML_URL}forecast.xsd")
+    xsd = etree.XMLSchema(xsd_root)
+
+    # Validate tmp.xml with xsd
+    if xsd.validate(xml_root):
+        return xml_root.getroot()
+    else:
+        print("Invalid XML file")
+        return ""
 

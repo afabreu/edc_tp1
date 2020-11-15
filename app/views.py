@@ -7,7 +7,6 @@ from BaseXClient import BaseXClient
 import json
 import edc_tp1.settings
 import xmltodict
-import requests
 
 # URL to Weather XML:
 # http://api.openweathermap.org/data/2.5/forecast?id=2742611&units=metric&mode=xml&APPID=d0279fea67692adea0e260e4cf86d072
@@ -36,23 +35,22 @@ def home(request):
     location_str, location_id = get_local_id(location_str)
     # create or open db
     database()
-    # TODO f1 basex_actions.db_to_xml to get xml from db name and location_str
-    # TODO tparams getting info from data_dict
+    weather_data = basex_actions.db_to_xml(location_str)
     tparams = {
         'title': f'Meteorologia - {datetime.now().day}/{datetime.now().month}',
         'year': datetime.now().year,
         'location': location_str,
-        'localtion_id': location_id,
-        'symbol': "04d",
-        'precipitation': 0,
-        'windDirection': "East-southeast",
-        'windSpeed': 2.42,
-        'temperature': 12.5,
-        'feels_like': 10.91,
-        'pressure': 1023,
-        'humidity': 86,
-        'clouds': 'overcast clouds',
-        'visibility': 10000,
+        'location_id': location_id,
+        'symbol': f"{weather_data['var']}: {weather_data['name']}",
+        'precipitation': f"{weather_data['precipitation']['probability']*100}%",
+        'windDirection': weather_data['windDirection']['name'],
+        'windSpeed': f"{weather_data['mps']} {weather_data['unit']}",
+        'temperature': f"{weather_data['value']} {weather_data['unit']}",
+        'feels_like': f"{weather_data['value']} {weather_data['unit']}",
+        'pressure': f"{weather_data['value']} {weather_data['unit']}",
+        'humidity': f"{weather_data['value']} {weather_data['unit']}",
+        'clouds': f"{weather_data['value']}, {weather_data['all']} {weather_data['unit']}",
+        'visibility': weather_data['value'],
     }
     return render(request, 'index.html', tparams)
 
@@ -118,58 +116,30 @@ def forecast(request, local_id):
     # create or open db
     database()
 
-    # TODO f1 xml = basex_actions.db_to_xml(db_name, location_str, today)
-    # TODO dict_city = data_dict(xml)
-    # TODO tparams getting info from dict_city
+    # TODO give date in datetime form (André Alves)
+    date = ...
+    weather_data = basex_actions.db_to_xml(city_name=location_str, date=date, is_forecast=True)
+
     tparams = {
-        'title': f'Meteorologia - {today.day}/{today.month} - {today.hour}:00',
+        'title': f'Meteorologia - {datetime.now().day}/{datetime.now().month}',
         'year': datetime.now().year,
-        'location': f'{location_str} - {location_id}',
-        'symbol': "04d",
-        'precipitation': 0,
-        'windDirection': "East-southeast",
-        'windSpeed': 2.42,
-        'temperature': 12.5,
-        'feels_like': 10.91,
-        'pressure': 1023,
-        'humidity': 86,
-        'clouds': 'overcast clouds',
-        'visibility': 10000,
+        'location': location_str,
+        'location_id': location_id,
+        'symbol': f"{weather_data['var']}: {weather_data['name']}",
+        'precipitation': f"{weather_data['precipitation']['probability']*100}%",
+        'windDirection': weather_data['windDirection']['name'],
+        'windSpeed': f"{weather_data['mps']} {weather_data['unit']}",
+        'temperature': f"{weather_data['value']} {weather_data['unit']}",
+        'feels_like': f"{weather_data['value']} {weather_data['unit']}",
+        'pressure': f"{weather_data['value']} {weather_data['unit']}",
+        'humidity': f"{weather_data['value']} {weather_data['unit']}",
+        'clouds': f"{weather_data['value']}, {weather_data['all']} {weather_data['unit']}",
+        'visibility': weather_data['value'],
         'temp_inicio': today.hour,
         'temp_fim': today.hour + 3,
         'temp_dia': today.day
     }
     return render(request, 'forecast.html', tparams)
-
-
-def api_call(city_id: int, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774'):  # d0279fea67692adea0e260e4cf86d072
-    """
-
-    :param city_id:
-    :param key: api key
-    :return:
-    """
-
-    # http://api.openweathermap.org/data/2.5/forecast?id=2742611&units=metric&mode=xml&APPID=13bb9df7b5a4c16cbd2a2167bcfc7774
-    url = f"http://api.openweathermap.org/data/2.5/forecast?id={city_id}&units=metric&mode=xml&APPID={key}"
-
-    request = requests.get(url=url)
-    assert request.status_code == 200, f"Request error! Status {request.status_code}"
-
-    xml = request.content.decode(request.encoding)
-
-    # Create tmp.xml file
-    with open(f"{edc_tp1.settings.XML_URL}tmp.xml", "w+") as xml_file:
-        xml_file.write(xml)
-    xml_root = etree.parse(f"{edc_tp1.settings.XML_URL}tmp.xml")
-    xsd_root = etree.parse(f"{edc_tp1.settings.XML_URL}forecast.xsd")
-    xsd = etree.XMLSchema(xsd_root)
-
-    # Validate tmp.xml with xsd
-    if xsd.validate(xml_root):
-        return xml_root.getroot()
-    else:
-        print("Invalid XML file")
 
 
 def database(name: str = "FiveDayForecast"):
@@ -186,21 +156,10 @@ def database(name: str = "FiveDayForecast"):
 
         db_root = etree.Element(name)
         for city in cities.values():
-            root = api_call(city)
-            db_root.append(root)  # Maybe use xupdate function instead
-            # basex_actions.update_city(root, city)
+            root = basex_actions.api_call(city)
+            db_root.append(root)
 
         session.add(f"{name}.xml", etree.tostring(db_root).decode("utf-8"))
-
-
-def data_dict(xml):
-    """
-    :param xml: xml with weather data of the city
-    :return: dict with weather parameters (same format of tparams)
-    """
-    d = xmltodict.parse(xml)
-    # TODO d is an OrderedDict, we may need to change to a simple dict
-    return d
 
 
 def get_local_id(city_name) -> tuple:
