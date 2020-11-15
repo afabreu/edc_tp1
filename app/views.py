@@ -68,6 +68,8 @@ def forecast(request, local_id):
     if 'inputDia' in request.POST and 'inputHora' in request.POST:
         dia = request.POST['inputDia']
         hora = request.POST['inputHora']
+
+        sum_day = -1
         if dia == "Hoje":
             sum_day = timedelta(days=0)
         elif dia == "Amanhã":
@@ -83,6 +85,7 @@ def forecast(request, local_id):
 
         today += sum_day
 
+        sum_hour = -1
         if hora == "00:00 - 03:00":
             sum_hour = timedelta(hours=0)
         elif hora == "03:00 - 06:00":
@@ -110,10 +113,13 @@ def forecast(request, local_id):
         today = now
 
     location_str, location_id = local_str(local_id)
-    # TODO create db
+
+    # create db
     database()
+
     # TODO f1 basex_actions.db_to_xml to get xml from db name and location_str
-    # TODO tparams getting info from data_dict
+    # TODO dict_city = data_dict(xml)
+    # TODO tparams getting info from dict_city
     tparams = {
         'title': f'Meteorologia - {today.day}/{today.month} - {today.hour}:00',
         'year': datetime.now().year,
