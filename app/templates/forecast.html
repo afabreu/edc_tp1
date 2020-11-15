@@ -56,7 +56,7 @@
             {% elif symbol == "50d" %}<img src="{% static 'img/50d.png' %}">
             {% elif symbol == "50n" %}<img src="{% static 'img/50n.png' %}">
         {% endif %}
-        {{ location }} do dia {{ temp_dia }} das {{ temp_inicio }} às {{ temp_fim }}</h2>
+        {{ location }} - {{ location_id }} do dia {{ temp_dia }} das {{ temp_inicio }} às {{ temp_fim }}</h2>
         <table class="table">
             <tbody>
                 <tr>

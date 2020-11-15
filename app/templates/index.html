@@ -1,9 +1,8 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
-<form action="" class="find-location" method="post">
-    <div class="input-group input-group mb-3">
+<div>
+    <form action="" class="find-location input-group" method="post" >
         {% csrf_token %}
         <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing">Localização</span>
@@ -12,8 +11,11 @@
         <div class="input-group-append">
             <input class="btn btn-outline-dark" type="submit" value="Procurar">
         </div>
-    </div>
-</form>
+    </form>
+</div>
+<div>
+    <a class="btn btn-outline-dark" href="/forecast/{{ localtion_id }}" role="button">Previsão para 5 dias</a>
+</div>
     <br><br>
 {% load static %}
 
@@ -39,7 +41,7 @@
             {% elif symbol == "50d" %}<img src="{% static 'img/50d.png' %}">
             {% elif symbol == "50n" %}<img src="{% static 'img/50n.png' %}">
         {% endif %}
-        {{ location }} - Tempo Currente</h2>
+        {{ location }} - {{ localtion_id }} - Tempo Currente</h2>
         <table class="table">
             <tbody>
                 <tr>

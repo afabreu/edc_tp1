@@ -40,7 +40,8 @@ def home(request):
     tparams = {
         'title': f'Meteorologia - {datetime.now().day}/{datetime.now().month}',
         'year': datetime.now().year,
-        'location': f'{location_str} - {location_id}',
+        'location': location_str,
+        'localtion_id': location_id,
         'symbol': "04d",
         'precipitation': 0,
         'windDirection': "East-southeast",
