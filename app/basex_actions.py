@@ -1,6 +1,7 @@
 from BaseXClient import BaseXClient
 from lxml import etree
 from datetime import timedelta
+import xmltodict
 
 
 def db_to_xml(city_name: str,
@@ -8,11 +9,15 @@ def db_to_xml(city_name: str,
               sum_day: timedelta = timedelta(days=0),
               sum_hour: timedelta = timedelta(hours=0)) -> str:
     """
-    TODO f1
+    TODO
     :param db_name: name of database containing the data
-    :param city_str: identification of the city
-    :return: xml with city's weather info
+    :param city_name: identification of the city
+    :param sum_day: days into the forecast
+    :param sum_hour: hours into the forecast
+    :return: xml with city's weather info: '<time...>...</time>'
     """
+
+    is_forecast = False
 
     session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
     try:

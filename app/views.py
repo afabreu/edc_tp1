@@ -16,6 +16,7 @@ import requests
 
 session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
 
+# eg: {'Aveiro': 1, 'Lisboa': 2, ...}
 cities = {}
 
 with open(edc_tp1.settings.TESTING_JSON) as f:
@@ -149,7 +150,7 @@ def api_call(city_id: int, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774'):  # d0
     :return:
     """
 
-    # http://api.openweathermap.org/data/2.5/forecast?id=2742611&units=metric&mode=xml&APPID=d0279fea67692adea0e260e4cf86d072
+    # http://api.openweathermap.org/data/2.5/forecast?id=2742611&units=metric&mode=xml&APPID=13bb9df7b5a4c16cbd2a2167bcfc7774
     url = f"http://api.openweathermap.org/data/2.5/forecast?id={city_id}&units=metric&mode=xml&APPID={key}"
 
     request = requests.get(url=url)
@@ -202,7 +203,7 @@ def data_dict(xml):
     return d
 
 
-def get_local_id(city_name):
+def get_local_id(city_name) -> tuple:
     """
     :param city_name: string with the name of the city
     :return: tuple of string and int, being the string the name of the city and int the id of the input city
