@@ -1,4 +1,5 @@
 from BaseXClient import BaseXClient
+from lxml import etree
 
 
 def db_to_xml(db_name: str, city_str: str) -> str:
@@ -34,3 +35,23 @@ def update_db(bd_name: str, xml: str):
         ...
     finally:
         session.close()
+
+
+def update_city(root: etree.Element, city: str):
+    """
+
+    :param root: xml element
+    :param city: city name
+    :return: modifies database (xupdate)
+    """
+    xml = root_to_xml(root)
+    ...
+
+
+def root_to_xml(root: etree.Element) -> str:
+    """
+
+    :param root: root of xml
+    :return: whole xml as string
+    """
+    ...

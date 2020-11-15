@@ -116,7 +116,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-#STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 STATIC_URL = os.path.join(BASE_DIR, 'app/static/')
 XML_URL = os.path.join(STATIC_URL, 'xml/')
 CITIES_JSON = os.path.join(STATIC_URL, 'json/cities_pt.json')

@@ -32,8 +32,8 @@ def home(request):
             location_str = 'Aveiro'
     else:
         location_str = 'Aveiro'
-    location_str, location_id = local_id(location_str)
-    # TODO create db
+    location_str, location_id = get_local_id(location_str)
+    # create or open db
     database()
     # TODO f1 basex_actions.db_to_xml to get xml from db name and location_str
     # TODO tparams getting info from data_dict
@@ -114,10 +114,10 @@ def forecast(request, local_id):
 
     location_str, location_id = local_str(local_id)
 
-    # create db
+    # create or open db
     database()
 
-    # TODO f1 basex_actions.db_to_xml to get xml from db name and location_str
+    # TODO f1 xml = basex_actions.db_to_xml(db_name, location_str)
     # TODO dict_city = data_dict(xml)
     # TODO tparams getting info from dict_city
     tparams = {
@@ -157,30 +157,39 @@ def api_call(city_id: int, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774'):  # d0
 
     xml = request.content.decode(request.encoding)
 
+    # Create tmp.xml file
     with open(f"{edc_tp1.settings.XML_URL}tmp.xml", "w+") as xml_file:
         xml_file.write(xml)
     xml_root = etree.parse(f"{edc_tp1.settings.XML_URL}tmp.xml")
     xsd_root = etree.parse(f"{edc_tp1.settings.XML_URL}forecast.xsd")
     xsd = etree.XMLSchema(xsd_root)
 
+    # Validate tmp.xml with xsd
     if xsd.validate(xml_root):
         return xml_root.getroot()
     else:
         print("Invalid XML file")
 
 
-def database():
-    try:
-        session.execute("open FiveDayForecast")
-    except IOError:
-        session.execute("create db FiveDayForecast")
+def database(name: str = "FiveDayForecast"):
+    """
 
-        db_root = etree.Element("FiveDayForecast")
+    :param name: name of db
+    :return: if db does not exist, create and fill it with cities' weather info
+            else, open db
+    """
+    try:
+        session.execute(f"open {name}")
+    except IOError:
+        session.execute(f"create db {name}")
+
+        db_root = etree.Element(name)
         for city in cities.values():
             root = api_call(city)
-            db_root.append(root)
+            db_root.append(root)  # Maybe use xupdate function instead
+            # basex_actions.update_city(root, city)
 
-        session.add("FiveDayForecast.xml", etree.tostring(db_root).decode("utf-8"))
+        session.add(f"{name}.xml", etree.tostring(db_root).decode("utf-8"))
 
 
 def data_dict(xml):
@@ -193,22 +202,22 @@ def data_dict(xml):
     return d
 
 
-def local_id(city_name):
-    '''
+def get_local_id(city_name):
+    """
     :param city_name: string with the name of the city
     :return: tuple of string and int, being the string the name of the city and int the id of the input city
-    '''
+    """
     city_id = cities.get(city_name, 2742611)
     if city_id == 2742611:
         return "Aveiro", city_id
     return city_name, city_id
 
 
-def local_str(city_id):
-    '''
+def local_str(city_id) -> tuple:
+    """
     :param city_id: int of the city
     :return: tuple of string and int, being the string the name of the city and int the id of the input city
-    '''
+    """
 
     for k, v in cities.items():
         if v == city_id:
