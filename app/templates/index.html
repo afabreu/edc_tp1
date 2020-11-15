@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div>
-    <form action="" class="find-location input-group" method="post" >
+<div class="row">
+    <form action="" class="find-location input-group col-md-8" method="post" >
         {% csrf_token %}
         <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing">Localização</span>
@@ -12,15 +12,17 @@
             <input class="btn btn-outline-dark" type="submit" value="Procurar">
         </div>
     </form>
+
+    <div class="col-md-4">
+        <a class="btn btn-outline-dark" href="/forecast/{{ localtion_id }}" role="button">Previsão para 5 dias</a>
+    </div>
 </div>
-<div>
-    <a class="btn btn-outline-dark" href="/forecast/{{ localtion_id }}" role="button">Previsão para 5 dias</a>
-</div>
+
     <br><br>
 {% load static %}
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md">
         <h2>
         {% if symbol == "01d" %}<img src="{% static 'img/01d.png' %}">
             {% elif symbol == "01n" %}<img src="{% static 'img/01n.png' %}">
