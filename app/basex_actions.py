@@ -29,7 +29,7 @@ def db_to_xml(city_name: str,
         # if so Select city
         city_xml = session.execute("xquery collection('{}')//weatherdata[location/name='{}']"
                                    .format(db_name, city_name))
-        # TODO if not ...
+        # TODO if not, call from api and add to db
         ...
 
         # Parse xml to dict
@@ -48,13 +48,18 @@ def db_to_xml(city_name: str,
                 # select correct node based on data
                 start = datetime.strptime(f.replace("T", " "), "%Y-%m-%d %H:%M:%S")
                 end = datetime.strptime(t.replace("T", " "), "%Y-%m-%d %H:%M:%S")
-                if start < date < end:
-                    return timestamp
+                if start <= date < end:
+                    info = timestamp
+                    break
         else:
             info = times[0]
 
     finally:
         session.close()
+
+    assert info != {}, "Info should not be empty: Date was not found"
+
+    # TODO Transform info to give only the necessary info (same as views.tparams)
 
     return info
 
