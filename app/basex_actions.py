@@ -1,8 +1,12 @@
 from BaseXClient import BaseXClient
 from lxml import etree
+from datetime import timedelta
 
 
-def db_to_xml(db_name: str, city_str: str) -> str:
+def db_to_xml(city_name: str,
+              db_name: str = "FiveDaysForecast",
+              sum_day: timedelta = timedelta(days=0),
+              sum_hour: timedelta = timedelta(hours=0)) -> str:
     """
     TODO f1
     :param db_name: name of database containing the data
@@ -14,6 +18,9 @@ def db_to_xml(db_name: str, city_str: str) -> str:
     try:
         xml = session.execute("xquery collection('{}')".format(db_name))
         # TODO filter data to get requested city's weather parameters
+        #   select city
+        #   select date and time
+        ...
     finally:
         session.close()
 
