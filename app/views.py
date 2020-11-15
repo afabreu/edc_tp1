@@ -116,30 +116,34 @@ def forecast(request, local_id):
     # create or open db
     database()
 
-    # TODO give date in datetime form (André Alves)
-    date = ...
-    weather_data = basex_actions.db_to_xml(city_name=location_str, date=date, is_forecast=True)
+    # TODO f1 xml = basex_actions.db_to_xml(db_name, location_str, today)
+    # TODO dict_city = data_dict(xml)
+    # TODO tparams getting info from dict_city
 
-    tparams = {
-        'title': f'Meteorologia - {datetime.now().day}/{datetime.now().month}',
+    query = f"""for $a in collection('FiveDayForecast')//weatherdata 
+                for $b in $a/forecast/time 
+                    where $a//name = "Aveiro" and $b/@from = "{today.isoformat()}"
+                    return $b"""
+    query2 = session.query(query)
+    res = query2.execute()
+    root = etree.XML(res)
+
+    xslt_file = etree.parse(f"{edc_tp1.settings.XML_URL}forecast.xsl")
+    transform = etree.XSLT(xslt_file)
+    html = transform(root)
+
+    context = {
+        'title': f'Meteorologia - {today.day}/{today.month} - {today.hour}:00',
         'year': datetime.now().year,
-        'location': location_str,
-        'location_id': location_id,
-        'symbol': f"{weather_data['var']}: {weather_data['name']}",
-        'precipitation': f"{weather_data['precipitation']['probability']*100}%",
-        'windDirection': weather_data['windDirection']['name'],
-        'windSpeed': f"{weather_data['mps']} {weather_data['unit']}",
-        'temperature': f"{weather_data['value']} {weather_data['unit']}",
-        'feels_like': f"{weather_data['value']} {weather_data['unit']}",
-        'pressure': f"{weather_data['value']} {weather_data['unit']}",
-        'humidity': f"{weather_data['value']} {weather_data['unit']}",
-        'clouds': f"{weather_data['value']}, {weather_data['all']} {weather_data['unit']}",
-        'visibility': weather_data['value'],
+        'location': f'{location_str} - {location_id}',
+        'symbol': "04d",
         'temp_inicio': today.hour,
         'temp_fim': today.hour + 3,
-        'temp_dia': today.day
+        'temp_dia': today.day,
+        'content': html
     }
-    return render(request, 'forecast.html', tparams)
+
+    return render(request, 'forecast.html', context)
 
 
 def database(name: str = "FiveDayForecast"):
