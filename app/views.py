@@ -118,7 +118,7 @@ def forecast(request, local_id):
     # create or open db
     database()
 
-    # TODO f1 xml = basex_actions.db_to_xml(db_name, location_str)
+    # TODO f1 xml = basex_actions.db_to_xml(db_name, location_str, today)
     # TODO dict_city = data_dict(xml)
     # TODO tparams getting info from dict_city
     tparams = {
