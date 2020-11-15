@@ -19,7 +19,7 @@ def db_to_xml(city_name: str,
     :return: xml with city's weather info: '<time...>...</time>'
     """
 
-    assert date is datetime, "date should be datetime"
+    assert type(date) is datetime, "date should be datetime"
 
     session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
     try:
