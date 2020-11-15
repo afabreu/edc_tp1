@@ -84,14 +84,17 @@ def api_call(city_id: int, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774'): #d027
 
 
 def database():
-    session.execute("check FiveDayForecast")
+    try:
+        session.execute("open FiveDayForecast")
+    except IOError:
+        session.execute("create db FiveDayForecast")
 
-    db_root = etree.Element("FiveDayForecast")
-    for city in cities.values():
-        root = api_call(city)
-        db_root.append(root)
+        db_root = etree.Element("FiveDayForecast")
+        for city in cities.values():
+            root = api_call(city)
+            db_root.append(root)
 
-    session.add("5DayForecast.xml", etree.tostring(db_root).decode("utf-8"))
+        session.add("FiveDayForecast.xml", etree.tostring(db_root).decode("utf-8"))
 
 
 def data_dict(xml):
