@@ -101,7 +101,10 @@ def api_call(city_id: int, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774',
 
     xml = request.content.decode(request.encoding)
 
-    xml_root = validate_forecast(xml)
+    if city_id == -1:
+        xml_root = validate_current(xml)
+    else:
+        xml_root = validate_forecast(xml)
 
     if to_string:
         return xml
