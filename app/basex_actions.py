@@ -97,7 +97,7 @@ def api_call(city_id: int, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774',
 
     xml = request.content.decode(request.encoding)
 
-    xml_root = validate(xml)
+    xml_root = validate_forecast(xml)
 
     if to_string:
         return xml
@@ -105,7 +105,7 @@ def api_call(city_id: int, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774',
         return xml_root
 
 
-def validate(xml: str) -> etree.Element:
+def validate_forecast(xml: str) -> etree.Element:
     """
 
     :param xml:
@@ -125,3 +125,39 @@ def validate(xml: str) -> etree.Element:
         print("Invalid XML file")
         return ""
 
+
+def current_weather(city_name: str, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774', to_string: bool = False):
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={city_name},PT&APPID={key}&mode=xml&units=metric&lang=pt"
+
+    request = requests.get(url=url)
+    assert request.status_code == 200, f"Request error! Status {request.status_code}"
+
+    xml = request.content.decode(request.encoding)
+
+    xml_root = validate_current(xml)
+
+    if to_string:
+        return xml
+    else:
+        return xml_root
+
+
+def validate_current(xml: str) -> etree.Element:
+    """
+
+    :param xml:
+    :return:
+    """
+    # Create tmp.xml file
+    with open(f"{edc_tp1.settings.XML_URL}tmp.xml", "w+") as xml_file:
+        xml_file.write(xml)
+    xml_root = etree.parse(f"{edc_tp1.settings.XML_URL}tmp.xml")
+    xsd_root = etree.parse(f"{edc_tp1.settings.XML_URL}weather.xsd")
+    xsd = etree.XMLSchema(xsd_root)
+
+    # Validate tmp.xml with xsd
+    if xsd.validate(xml_root):
+        return xml_root.getroot()
+    else:
+        print("Invalid XML file")
+        return ""

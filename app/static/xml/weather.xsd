@@ -106,6 +106,8 @@
       <xs:extension base="xs:string">
         <xs:attribute type="xs:string" name="mode"/>
         <xs:attribute type="xs:string" name="value" use="optional"/>
+        <xs:attribute type="xs:string" name="unit" use="optional"/>
+        <xs:anyAttribute/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
