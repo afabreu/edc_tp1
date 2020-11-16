@@ -17,17 +17,11 @@ session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
 
 # eg: {'Aveiro': 1, 'Lisboa': 2, ...}
 cities = {}
-all_pt_cities = {}
 
 with open(edc_tp1.settings.TESTING_JSON) as f:
     json_data = json.loads(f.read())
     for jd in json_data:
         cities[jd['name']] = jd['id']
-
-with open(edc_tp1.settings.CITIES_JSON) as f:
-    json_data = json.loads(f.read())
-    for jd in json_data:
-        all_pt_cities[jd['name']] = jd['id']
 
 
 def home(request):
@@ -40,23 +34,25 @@ def home(request):
         location_str = 'Aveiro'
     location_str, location_id = get_local_id(location_str)
     # create or open db
-
     database()
-
-    root_current = basex_actions.current_weather(location_str)
-    xslt_file = etree.parse(f"{edc_tp1.settings.XML_URL}weather.xsl")
-    transform = etree.XSLT(xslt_file)
-    html = transform(root_current)
-
-    context = {
+#    weather_data = basex_actions.db_to_xml(location_str)
+    tparams = {
         'title': f'Meteorologia - {datetime.now().day}/{datetime.now().month}',
         'year': datetime.now().year,
         'location': location_str,
         'location_id': location_id,
-        'symbol': "04d",
-        'content': html
+       # 'symbol': f"{weather_data['var']}: {weather_data['name']}",
+       # 'precipitation': f"{weather_data['precipitation']['probability']*100}%",
+       # 'windDirection': weather_data['windDirection']['name'],
+       # 'windSpeed': f"{weather_data['mps']} {weather_data['unit']}",
+       # 'temperature': f"{weather_data['value']} {weather_data['unit']}",
+       # 'feels_like': f"{weather_data['value']} {weather_data['unit']}",
+       # 'pressure': f"{weather_data['value']} {weather_data['unit']}",
+       # 'humidity': f"{weather_data['value']} {weather_data['unit']}",
+       # 'clouds': f"{weather_data['value']}, {weather_data['all']} {weather_data['unit']}",
+       # 'visibility': weather_data['value'],
     }
-    return render(request, 'index.html', context)
+    return render(request, 'index.html', tparams)
 
 
 def forecast(request, local_id):
@@ -129,12 +125,12 @@ def forecast(request, local_id):
                     where $a//name = "Aveiro" and $b/@from = "{submit_day.isoformat()}"
                     return $b"""
     query2 = session.query(query)
-    xml_forecast = query2.execute()
-    root_forecast = etree.XML(xml_forecast)
+    res = query2.execute()
+    root = etree.XML(res)
 
     xslt_file = etree.parse(f"{edc_tp1.settings.XML_URL}forecast.xsl")
     transform = etree.XSLT(xslt_file)
-    html = transform(root_forecast)
+    html = transform(root)
 
     context = {
         'title': f'Meteorologia - {submit_day.day}/{submit_day.month} - {submit_day.hour}:00',
@@ -147,6 +143,11 @@ def forecast(request, local_id):
     }
 
     return render(request, 'forecast.html', context)
+
+
+def img(request, var):
+    image = f'img/{var}.png'
+    return os.path.join(edc_tp1.settings.STATIC_URL, image)
 
 
 def database(name: str = "FiveDayForecast"):
@@ -169,13 +170,12 @@ def database(name: str = "FiveDayForecast"):
         session.add(f"{name}.xml", etree.tostring(db_root).decode("utf-8"))
 
 
-
 def get_local_id(city_name) -> tuple:
     """
     :param city_name: string with the name of the city
     :return: tuple of string and int, being the string the name of the city and int the id of the input city
     """
-    city_id = all_pt_cities.get(city_name, 2742611)
+    city_id = cities.get(city_name, 2742611)
     if city_id == 2742611:
         return "Aveiro", city_id
     return city_name, city_id
@@ -187,7 +187,7 @@ def local_str(city_id) -> tuple:
     :return: tuple of string and int, being the string the name of the city and int the id of the input city
     """
 
-    for k, v in all_pt_cities.items():
+    for k, v in cities.items():
         if v == city_id:
             return k, v
     return "Aveiro", 2742611

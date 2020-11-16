@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('forecast/<int:local_id>/', views.forecast, name='forecast'),
+    path('img/<slug:var>/', views.img, name='img'),
 ]

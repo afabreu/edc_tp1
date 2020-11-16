@@ -44,7 +44,46 @@
             {% elif symbol == "50n" %}<img src="{% static 'img/50n.png' %}">
         {% endif %}
         {{ location }} - {{ localtion_id }} - Tempo Currente</h2>
-        {{ content | safe }}
+        <table class="table">
+            <tbody>
+                <tr>
+                  <th scope="row">Precipitação</th>
+                  <td>{{ precipitation }} %</td>
+                </tr>
+                <tr>
+                  <th scope="row">Direção Vento</th>
+                  <td>{{ windDirection }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Velocidade Vento</th>
+                  <td>{{ windSpeed }} m/s</td>
+                </tr>
+                <tr>
+                  <th scope="row">Temperatura</th>
+                  <td>{{ temperature }}°C</td>
+                </tr>
+                <tr>
+                  <th scope="row">Feels like</th>
+                  <td>{{ feels_like }}°C</td>
+                </tr>
+                <tr>
+                  <th scope="row">Pressão</th>
+                  <td>{{ pressure }} hPa</td>
+                </tr>
+                <tr>
+                  <th scope="row">Humidade</th>
+                  <td>{{ humidity }} %</td>
+                </tr>
+                <tr>
+                  <th scope="row">Nuvens</th>
+                  <td>{{ clouds }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Visibilidade</th>
+                  <td>{{ visibility }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
