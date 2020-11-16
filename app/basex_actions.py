@@ -79,17 +79,22 @@ def add_city_to_db(city, base_name: str = "FiveDayForecast"):
 
 
 def api_call(city_id: int, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774',
-             to_string: bool = False):  # d0279fea67692adea0e260e4cf86d072
+             to_string: bool = False, city_name: str = ""):  # d0279fea67692adea0e260e4cf86d072
     """
 
     :param city_id:
     :param key: api key
     :param to_string: if true, returns xml in string form. if not, in etree.Element root form
+    :param city_name: name of city if needed ("" if not)
     :return:
     """
 
     # http://api.openweathermap.org/data/2.5/forecast?id=2742611&units=metric&mode=xml&APPID=13bb9df7b5a4c16cbd2a2167bcfc7774
-    url = f"http://api.openweathermap.org/data/2.5/forecast?id={city_id}&units=metric&mode=xml&APPID={key}"
+
+    if city_name == "":
+        url = f"http://api.openweathermap.org/data/2.5/forecast?id={city_id}&units=metric&mode=xml&APPID={key}"
+    else:
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={city_name},PT&APPID={key}&mode=xml&units=metric&lang=pt"
 
     request = requests.get(url=url)
     assert request.status_code == 200, f"Request error! Status {request.status_code}"
@@ -113,20 +118,9 @@ def validate_forecast(xml: str) -> etree.Element:
     return validate(is_forecast=True, xml=xml)
 
 
-def current_weather(city_name: str, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774', to_string: bool = False):
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city_name},PT&APPID={key}&mode=xml&units=metric&lang=pt"
-
-    request = requests.get(url=url)
-    assert request.status_code == 200, f"Request error! Status {request.status_code}"
-
-    xml = request.content.decode(request.encoding)
-
-    xml_root = validate_current(xml)
-
-    if to_string:
-        return xml
-    else:
-        return xml_root
+def current_weather(city_name: str, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774',
+                    to_string: bool = False):
+    return api_call(city_id=-1, key=key, city_name=city_name, to_string=to_string)
 
 
 def validate_current(xml: str) -> etree.Element:
