@@ -16,7 +16,7 @@ def db_to_xml(city_name: str,
     :param city_name: name of the city
     :param date: day of requested weather info
     :param is_forecast: True if it is a forecast
-    :return: xml with city's weather info: '<time...>...</time>'
+    :return: dict with city's weather info
     """
 
     assert type(date) is datetime, "date should be datetime"
@@ -26,7 +26,6 @@ def db_to_xml(city_name: str,
 
         city_xml = session.execute("xquery collection('{}')//weatherdata[location/name='{}']"
                                    .format(db_name, city_name))
-        # TODO if city does not exist, call from api and add to db
         if city_xml == "":
             add_city_to_db(city_name)
 
@@ -111,19 +110,7 @@ def validate_forecast(xml: str) -> etree.Element:
     :param xml:
     :return:
     """
-    # Create tmp.xml file
-    with open(f"{edc_tp1.settings.XML_URL}tmp.xml", "w+") as xml_file:
-        xml_file.write(xml)
-    xml_root = etree.parse(f"{edc_tp1.settings.XML_URL}tmp.xml")
-    xsd_root = etree.parse(f"{edc_tp1.settings.XML_URL}forecast.xsd")
-    xsd = etree.XMLSchema(xsd_root)
-
-    # Validate tmp.xml with xsd
-    if xsd.validate(xml_root):
-        return xml_root.getroot()
-    else:
-        print("Invalid XML file")
-        return ""
+    return validate(is_forecast=True, xml=xml)
 
 
 def current_weather(city_name: str, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774', to_string: bool = False):
@@ -148,11 +135,25 @@ def validate_current(xml: str) -> etree.Element:
     :param xml:
     :return:
     """
+    return validate(is_forecast=False, xml=xml)
+
+
+def validate(is_forecast: bool, xml: str) -> etree.Element:
+    """
+
+    :param is_forecast:
+    :param xml:
+    :return:
+    """
+    fw = "weather"
+    if is_forecast:
+        fw = "forecast"
+
     # Create tmp.xml file
     with open(f"{edc_tp1.settings.XML_URL}tmp.xml", "w+") as xml_file:
         xml_file.write(xml)
     xml_root = etree.parse(f"{edc_tp1.settings.XML_URL}tmp.xml")
-    xsd_root = etree.parse(f"{edc_tp1.settings.XML_URL}weather.xsd")
+    xsd_root = etree.parse(f"{edc_tp1.settings.XML_URL}{fw}.xsd")
     xsd = etree.XMLSchema(xsd_root)
 
     # Validate tmp.xml with xsd
