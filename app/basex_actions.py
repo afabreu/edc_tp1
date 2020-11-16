@@ -59,7 +59,13 @@ def db_to_xml(city_name: str,
     return info
 
 
-def add_city_to_db(city, base_name: str = "FiveDayForecast"):
+def add_city_to_db(city_id, base_name: str = "FiveDayForecast"):
+    """
+
+    :param city_id:
+    :param base_name:
+    :return:
+    """
 
     session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
 
@@ -70,7 +76,7 @@ def add_city_to_db(city, base_name: str = "FiveDayForecast"):
 
     finally:
         db_root = etree.Element(base_name)
-        root = api_call(city, to_string=False)
+        root = api_call(city_id, to_string=False)
         # TODO delete next line and implement same action through xupdate
         db_root.append(root)
 
