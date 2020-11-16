@@ -6,7 +6,6 @@ from lxml import etree
 from BaseXClient import BaseXClient
 import json
 import edc_tp1.settings
-import xmltodict
 
 # URL to Weather XML:
 # http://api.openweathermap.org/data/2.5/forecast?id=2742611&units=metric&mode=xml&APPID=d0279fea67692adea0e260e4cf86d072
@@ -120,16 +119,14 @@ def forecast(request, local_id):
     # create or open db
     database()
 
-    # TODO f1 xml = basex_actions.db_to_xml(db_name, location_str, submit_day)
-    # TODO dict_city = data_dict(xml)
-    # TODO tparams getting info from dict_city
-
     query = f"""for $a in collection('FiveDayForecast')//weatherdata 
                 for $b in $a/forecast/time 
                     where $a//name = "Aveiro" and $b/@from = "{submit_day.isoformat()}"
                     return $b"""
     query2 = session.query(query)
     xml_forecast = query2.execute()
+    if xml_forecast == "":
+        basex_actions.update_forecast()
     root_forecast = etree.XML(xml_forecast)
 
     xslt_file = etree.parse(f"{edc_tp1.settings.XML_URL}forecast.xsl")
@@ -167,7 +164,6 @@ def database(name: str = "FiveDayForecast"):
             db_root.append(root)
 
         session.add(f"{name}.xml", etree.tostring(db_root).decode("utf-8"))
-
 
 
 def get_local_id(city_name) -> tuple:

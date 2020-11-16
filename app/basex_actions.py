@@ -11,7 +11,6 @@ def db_to_xml(city_name: str,
               date: datetime = datetime.now(),
               is_forecast: bool = False) -> dict:
     """
-    TODO
     :param db_name: name of database containing the data
     :param city_name: name of the city
     :param date: day of requested weather info
@@ -69,13 +68,66 @@ def add_city_to_db(city, base_name: str = "FiveDayForecast"):
         session.execute(f"create db {base_name}")
 
     finally:
-        db_root = etree.Element(base_name)
-        root = api_call(city, to_string=False)
-        # TODO delete next line and implement same action through xupdate
-        db_root.append(root)
+        # db_root = etree.Element(base_name) Obsolete?
+        xml = api_call(city, to_string=True)
+        query = "insert node {} into <FiveDayForecast>".format(xml.split('\n')[-1])
+        session.execute(query)
+        # db_root.append(root) obsolete?
 
-        session.add(f"{base_name}.xml", etree.tostring(db_root).decode("utf-8"))
+        # session.add(f"{base_name}.xml", etree.tostring(db_root).decode("utf-8")) obsolete?
         session.close()
+
+
+def update_forecast(city_id: int):
+    """
+    TODO complete function
+    :param city_id:
+    :return: updated city's node forecast
+    """
+    last_datetime = get_db_last_datetime(city_id=city_id)
+    xml = api_call(city_id=city_id, to_string=True)
+    xml_sliced = xml_slice_by_datetime(last_datetime, xml, direction="after")
+
+    session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
+    try:
+        for node in xml_sliced:
+            assert type(node) is str, "Error: node should be str but is {}".format(type(node))
+            session.execute("insert node {} as last into <FiveDayForecast>".format(node))
+    finally:
+        session.close()
+
+
+def xml_slice_by_datetime(datetime: datetime, xml:str, direction: str) -> list:
+    """
+
+    :param datetime:
+    :param direction: if "after" give <time> nodes after (not inclusive) the one with the given datetime
+    :return: list of node strings
+    """
+    nodes_list = list()
+    if direction == "after":
+        ...
+    elif direction == "before":
+        ...
+    else:
+        raise AssertionError("direction {} is invalid".format(direction))
+    return nodes_list
+
+
+def get_db_last_datetime(city_id: int) -> datetime:
+
+    session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
+    last_datetime = datetime(1900, 1, 1)
+
+    try:
+        # TODO get datetime of last <time> node
+        ...
+    finally:
+        session.close()
+
+    assert last_datetime != datetime(1900, 1, 1), "In this case, city does not exist in db, most likely"
+
+    return last_datetime
 
 
 def api_call(city_id: int, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774',
@@ -102,8 +154,10 @@ def api_call(city_id: int, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774',
     xml = request.content.decode(request.encoding)
 
     if city_id == -1:
+        # Current xml data type
         xml_root = validate_current(xml)
     else:
+        # Forecast xml data type
         xml_root = validate_forecast(xml)
 
     if to_string:
@@ -149,13 +203,17 @@ def validate(is_forecast: bool, xml: str) -> etree.Element:
     # Create tmp.xml file
     with open(f"{edc_tp1.settings.XML_URL}tmp.xml", "w+") as xml_file:
         xml_file.write(xml)
-    xml_root = etree.parse(f"{edc_tp1.settings.XML_URL}tmp.xml")
-    xsd_root = etree.parse(f"{edc_tp1.settings.XML_URL}{fw}.xsd")
+
+    xml_name = f"{edc_tp1.settings.XML_URL}tmp.xml"
+    xml_root = etree.parse(xml_name)
+
+    xsd_name = f"{edc_tp1.settings.XML_URL}{fw}.xsd"
+    xsd_root = etree.parse(xsd_name)
+
     xsd = etree.XMLSchema(xsd_root)
 
     # Validate tmp.xml with xsd
     if xsd.validate(xml_root):
         return xml_root.getroot()
     else:
-        print("Invalid XML file")
-        return ""
+        raise AssertionError(f"{xsd_name.split('/')[-1]} said {xml_name.split('/')[-1]} is invalid")
