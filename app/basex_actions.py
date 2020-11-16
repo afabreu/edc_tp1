@@ -146,13 +146,17 @@ def validate(is_forecast: bool, xml: str) -> etree.Element:
     # Create tmp.xml file
     with open(f"{edc_tp1.settings.XML_URL}tmp.xml", "w+") as xml_file:
         xml_file.write(xml)
-    xml_root = etree.parse(f"{edc_tp1.settings.XML_URL}tmp.xml")
-    xsd_root = etree.parse(f"{edc_tp1.settings.XML_URL}{fw}.xsd")
+
+    xml_name = f"{edc_tp1.settings.XML_URL}tmp.xml"
+    xml_root = etree.parse(xml_name)
+
+    xsd_name = f"{edc_tp1.settings.XML_URL}{fw}.xsd"
+    xsd_root = etree.parse(xsd_name)
+
     xsd = etree.XMLSchema(xsd_root)
 
     # Validate tmp.xml with xsd
     if xsd.validate(xml_root):
         return xml_root.getroot()
     else:
-        print("Invalid XML file")
-        return ""
+        raise AssertionError(f"{xsd_name.split('/')[-1]} said {xml_name.split('/')[-1]} is invalid")
