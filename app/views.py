@@ -126,7 +126,7 @@ def forecast(request, local_id):
     query2 = session.query(query)
     xml_forecast = query2.execute()
     if xml_forecast == "":
-        basex_actions.update_forecast()
+        basex_actions.update_forecast(location_id)
     root_forecast = etree.XML(xml_forecast)
 
     xslt_file = etree.parse(f"{edc_tp1.settings.XML_URL}forecast.xsl")

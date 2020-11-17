@@ -58,7 +58,13 @@ def db_to_xml(city_name: str,
     return info
 
 
-def add_city_to_db(city, base_name: str = "FiveDayForecast"):
+def add_city_to_db(city: int, base_name: str = "FiveDayForecast"):
+    """
+
+    :param city: city id number
+    :param base_name: database name (forecast as default)
+    :return: Adds the city do the database
+    """
 
     session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
 
@@ -66,7 +72,6 @@ def add_city_to_db(city, base_name: str = "FiveDayForecast"):
         session.execute(f"open {base_name}")
     except IOError:
         session.execute(f"create db {base_name}")
-
     finally:
         # db_root = etree.Element(base_name) Obsolete?
         xml = api_call(city, to_string=True)
