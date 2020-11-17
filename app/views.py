@@ -53,7 +53,6 @@ def home(request):
         'year': datetime.now().year,
         'location': location_str,
         'location_id': location_id,
-        'symbol': "04d",
         'content': html
     }
     return render(request, 'index.html', context)
