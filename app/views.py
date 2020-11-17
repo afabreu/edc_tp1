@@ -6,6 +6,7 @@ from lxml import etree
 from BaseXClient import BaseXClient
 import json
 import edc_tp1.settings
+import requests
 
 # URL to Weather XML:
 # http://api.openweathermap.org/data/2.5/forecast?id=2742611&units=metric&mode=xml&APPID=d0279fea67692adea0e260e4cf86d072
@@ -144,6 +145,38 @@ def forecast(request, local_id):
     }
 
     return render(request, 'forecast.html', context)
+
+
+def news(request):
+    rss = requests.get("http://www.ipma.pt/resources.www/rss/rss.news.ipma.xml")
+    assert rss.status_code == 200, f"Request error! Status {rss.status_code}"
+    # rss = rss.text
+    rss = rss.content.decode(rss.encoding)
+    rss = rss.replace('&A', '&amp;A')
+
+    with open(f'{edc_tp1.settings.XML_URL}test.xml', 'w+', encoding="UTF-8") as file:
+        file.write(rss)
+
+    with open(f'{edc_tp1.settings.XML_URL}test.xml', 'r+') as file:
+        xml = file.read()
+
+    #    xml = etree.parse(f"{edc_tp1.settings.XML_URL}rss.news.ipma.xml")
+    xml = etree.fromstring(xml)
+
+    xsd_root = etree.parse(f"{edc_tp1.settings.XML_URL}rss.news.ipma.xsd")
+    xsd = etree.XMLSchema(xsd_root)
+
+    xsd.validate(xml)
+
+    xslt_file = etree.parse(f"{edc_tp1.settings.XML_URL}rss.xsl")
+    transform = etree.XSLT(xslt_file)
+    html = transform(xml)
+
+    context = {
+        'year': datetime.now().year,
+        'rss': html
+    }
+    return render(request, 'news.html', context)
 
 
 def database(name: str = "FiveDayForecast"):
