@@ -6,13 +6,13 @@ import requests
 import edc_tp1.settings
 
 
-def db_to_xml(city_name: str,
+def db_to_xml(city_id: int,
               db_name: str = "FiveDaysForecast",
               date: datetime = datetime.now(),
               is_forecast: bool = False) -> dict:
     """
     :param db_name: name of database containing the data
-    :param city_name: name of the city
+    :param city_id: name of the city
     :param date: day of requested weather info
     :param is_forecast: True if it is a forecast
     :return: dict with city's weather info
@@ -24,9 +24,9 @@ def db_to_xml(city_name: str,
     try:
 
         city_xml = session.execute("xquery collection('{}')//weatherdata[location/name='{}']"
-                                   .format(db_name, city_name))
+                                   .format(db_name, city_id))
         if city_xml == "":
-            add_city_to_db(city_name)
+            add_city_to_db(city_id)
 
         # Parse xml to dict
         city_dict = xmltodict.parse(city_xml)
@@ -41,10 +41,9 @@ def db_to_xml(city_name: str,
         if is_forecast:
             for timestamp in times:
                 f, t = timestamp['@from'], timestamp['@to']
-                # select correct node based on data
-                start = datetime.strptime(f.replace("T", " "), "%Y-%m-%d %H:%M:%S")
-                end = datetime.strptime(t.replace("T", " "), "%Y-%m-%d %H:%M:%S")
-                if start <= date < end:
+
+                #
+                if is_in_range(f, date, t):
                     info = timestamp
                     break
         else:
@@ -56,6 +55,30 @@ def db_to_xml(city_name: str,
     assert info != {}, "Info should not be empty: Date was not found"
 
     return info
+
+
+def is_in_range(start: str, date_t: datetime, end: str) -> int:
+    """
+
+    :param date_t: datetime to evaluate
+    :param start: left side of interval
+    :param end: right side of interval
+    :return: True if date_T is in interval or equals start, False otherwise
+    """
+
+    # TODO check if start/end format is correct
+    ...
+    # select correct node based on data
+    start = datetime.strptime(start.replace("T", " "), "%Y-%m-%d %H:%M:%S")
+    end = datetime.strptime(end.replace("T", " "), "%Y-%m-%d %H:%M:%S")
+
+    if start <= date_t < end:
+        return 0
+    elif start > date_t:
+        return -1
+    elif date_t >= end:
+        return 1
+    raise AssertionError("This was not supposed to happen")
 
 
 def add_city_to_db(city: int, base_name: str = "FiveDayForecast"):
@@ -73,72 +96,164 @@ def add_city_to_db(city: int, base_name: str = "FiveDayForecast"):
     except IOError:
         session.execute(f"create db {base_name}")
     finally:
-        # db_root = etree.Element(base_name) Obsolete?
-        xml = api_call(city, to_string=True)
-        query = "insert node {} into <FiveDayForecast>".format(xml.split('\n')[-1])
+        xml = api_call(city, to_string=True, remove_header=True)
+        query = "xquery insert node {} as last into <{}>".format(xml, base_name)
         session.execute(query)
-        # db_root.append(root) obsolete?
 
-        # session.add(f"{base_name}.xml", etree.tostring(db_root).decode("utf-8")) obsolete?
         session.close()
 
 
-def update_forecast(city_id: int):
+def update_forecast(city_name: str, city_id: int):
     """
-    TODO complete function
+
     :param city_id:
-    :return: updated city's node forecast
+    :param city_name: id of the city
+    :return: update <time> nodes from the future (delete them and insert new ones from api)
     """
-    last_datetime = get_db_last_datetime(city_id=city_id)
-    xml = api_call(city_id=city_id, to_string=True)
-    xml_sliced = xml_slice_by_datetime(last_datetime, xml, direction="after")
+
+    # Call forecast data from api
+    xml = api_call(city_id=city_id, to_string=True, remove_header=True)
+
+    # Get the forecast node in str from the xml above
+    xml_forecast = get_forecast_node(city_name, xml)
 
     session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
     try:
-        for node in xml_sliced:
-            assert type(node) is str, "Error: node should be str but is {}".format(type(node))
-            session.execute("insert node {} as last into <FiveDayForecast>".format(node))
+        # Open forecast db
+        session.execute(f"open FiveDayForecast")
+
+        # Check if city is on db
+        xq = "xquery collection('FiveDayForecast')//weatherdata[location/name='{}']"
+        city_in_db = session.execute(xq).format(city_name) != ""
+        if not city_in_db:
+            add_city_to_db(city_id)
+
+        # Delete forecast node
+        session.execute("xquery delete node collection('FiveDayForecast')//weatherdata[location/name='{}']/forecast"
+                        .format(city_name))
+
+        # Insert new forecast node
+        query = "xquery insert node {} as last into collection('FiveDayForecast')//weatherdata[location/name='{}']/forecast".\
+            format(xml_forecast, city_name)
+        session.execute(query)
+
     finally:
         session.close()
 
 
-def xml_slice_by_datetime(datetime: datetime, xml:str, direction: str) -> list:
+def xml_slice_by_datetime(date_time: datetime, xml: str, direction: str, inclusive: bool) -> list:
     """
-
-    :param datetime:
-    :param direction: if "after" give <time> nodes after (not inclusive) the one with the given datetime
+    :param inclusive: include node with current datetime
+    :param xml:
+    :param date_time: datetime in which evaluations will be based on
+    :param direction: if "after" give <time> nodes after the one with the given datetime
     :return: list of node strings
     """
-    nodes_list = list()
-    if direction == "after":
-        ...
-    elif direction == "before":
-        ...
-    else:
-        raise AssertionError("direction {} is invalid".format(direction))
-    return nodes_list
+    nodes_list = split_time_nodes(xml=xml)
+    # Add list with nodes from past and nodes from future, respectively
+    nodes_after = nodes_before = list()
+
+    # Checking if nodes_list is a list of strings
+    check = [type(node) is str for node in nodes_list]
+    check = all(check) and type(check) is list
+    assert check, f"Incorrect data type"
+
+    # Checking there is only two possible directions
+    assert direction in ['after', 'before']
+
+    for time in nodes_list:
+
+        # Check if this node is from past or future
+        d = xmltodict.parse(time)
+        verify = is_in_range(d['@from'], time, d['@to'])
+
+        # Some verification of node syntax
+        keys = ['time', 'symbol', 'precipitation', 'windDirection',
+                'windSpeed', 'temperature', 'feels_like',
+                'pressure', 'humidity', 'clouds', 'visibility']
+        assert d.keys() in [keys[0]], f"Error in node validation: {d.keys()}"
+        assert d[keys[0]].keys() in [keys[1:]], f"Error in node validation: {d[keys[0]].keys()}"
+
+        # Add to proper list based on last verification
+        if verify == -1:
+            # In case its from future
+            nodes_after.append(time)
+        elif verify:
+            # In case its from past
+            nodes_before.append(time)
+        else:
+            # In case it's present time
+            if inclusive:
+                # Needs to be inclusive
+                nodes_before.append(time)
+                nodes_after.append(time)
+
+    if direction == 'after':
+        return nodes_after
+    return nodes_before
 
 
-def get_db_last_datetime(city_id: int) -> datetime:
+def split_time_nodes(xml: str) -> list:
+    """
+
+    :param xml:
+    :return:
+    """
+
+    # Take off \n
+    xml = xml.replace('\n', '')
+
+    # splitting collection to individuals
+    split = [f"{time_node}</time>" for time_node in xml.split("</time>")]
+
+    return split
+
+
+def get_forecast_node(city_name: str, xml: str) -> str:
+    """
+
+    :param xml:
+    :param city_name:
+    :return:
+    """
 
     session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
-    last_datetime = datetime(1900, 1, 1)
 
     try:
-        # TODO get datetime of last <time> node
-        ...
+        session.execute("create db database")
+
+        session.add("HeadNode", xml)
+
+        # Assert there is one only <weatherdata> node
+        a = session.execute("xquery collection('database')//weatherdata")
+        b = session.execute("xquery collection('database')/weatherdata")
+        assert a == b
+
+        # Execute query and save in xml
+
+        query = """let $a:=collection('database')//weatherdata/forecast//time
+                    return $a""".format(city_name)
+        query2 = session.query(querytxt=query)
+        xml_ = query2.execute()
+
+        # Check var
+        assert xml_ != "", "Error: xml_ var is empty"
+
+        session.execute("drop db database")
+
     finally:
         session.close()
 
-    assert last_datetime != datetime(1900, 1, 1), "In this case, city does not exist in db, most likely"
-
-    return last_datetime
+    return xml_
 
 
 def api_call(city_id: int, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774',
-             to_string: bool = False, city_name: str = ""):  # d0279fea67692adea0e260e4cf86d072
+             to_string: bool = False, city_name: str = "",
+             remove_header: bool = False, current: bool = False):  # d0279fea67692adea0e260e4cf86d072
     """
 
+    :param current:
+    :param remove_header: remove xml header (redundant if to_string is False)
     :param city_id:
     :param key: api key
     :param to_string: if true, returns xml in string form. if not, in etree.Element root form
@@ -158,7 +273,7 @@ def api_call(city_id: int, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774',
 
     xml = request.content.decode(request.encoding)
 
-    if city_id == -1:
+    if current:
         # Current xml data type
         xml_root = validate_current(xml)
     else:
@@ -166,6 +281,8 @@ def api_call(city_id: int, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774',
         xml_root = validate_forecast(xml)
 
     if to_string:
+        if remove_header:
+            return xml.split('\n')[-1]
         return xml
     else:
         return xml_root
@@ -182,7 +299,7 @@ def validate_forecast(xml: str) -> etree.Element:
 
 def current_weather(city_name: str, key: str = '13bb9df7b5a4c16cbd2a2167bcfc7774',
                     to_string: bool = False):
-    return api_call(city_id=-1, key=key, city_name=city_name, to_string=to_string)
+    return api_call(city_id=-1, key=key, city_name=city_name, to_string=to_string, current=True)
 
 
 def validate_current(xml: str) -> etree.Element:
