@@ -49,16 +49,17 @@ def home(request):
     transform = etree.XSLT(xslt_file)
     html = transform(root_current)
 
-    root_forecast = basex_actions.api_call(location_id, to_string=True)
+    if not basex_actions.city_in_db(location_id):
+        root_forecast = basex_actions.api_call(location_id, to_string=True)
 
-    if "<?xml" in root_forecast:
-        root_forecast = root_forecast[39:]
+        if "<?xml" in root_forecast:
+            root_forecast = root_forecast[39:]
 
-    query = f"""let $d := doc('FiveDayForecast')
-                return insert node {root_forecast} as last into $d/FiveDayForecast """
+        query = f"""let $d := doc('FiveDayForecast')
+                            return insert node {root_forecast} as last into $d/FiveDayForecast """
 
-    query2 = session.query(query)
-    query2.execute()
+        query2 = session.query(query)
+        query2.execute()
 
     context = {
         'title': f'Meteorologia - {datetime.now().day}/{datetime.now().month}',
@@ -133,7 +134,7 @@ def forecast(request, local_id):
 
     query = f"""for $a in collection('FiveDayForecast')//weatherdata 
                 for $b in $a/forecast/time 
-                    where $a//name = "Aveiro" and $b/@from = "{submit_day.isoformat()}"
+                    where $a/location/location/@geobaseid = {location_id} and $b/@from = "{submit_day.isoformat()}"
                     return $b"""
     query2 = session.query(query)
     xml_forecast = query2.execute()
