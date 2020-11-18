@@ -150,13 +150,13 @@ def news(request):
     rss = requests.get("http://www.ipma.pt/resources.www/rss/rss.news.ipma.xml")
     assert rss.status_code == 200, f"Request error! Status {rss.status_code}"
     # rss = rss.text
-    rss = rss.content.decode(rss.encoding)
+    rss = rss.content.decode("UTF-8")
     rss = rss.replace('&A', '&amp;A')
 
     with open(f'{edc_tp1.settings.XML_URL}test.xml', 'w+', encoding="UTF-8") as file:
         file.write(rss)
 
-    with open(f'{edc_tp1.settings.XML_URL}test.xml', 'r+') as file:
+    with open(f'{edc_tp1.settings.XML_URL}test.xml', 'r+', encoding="UTF-8") as file:
         xml = file.read()
 
     #    xml = etree.parse(f"{edc_tp1.settings.XML_URL}rss.news.ipma.xml")
