@@ -339,3 +339,21 @@ def validate(is_forecast: bool, xml: str) -> etree.Element:
         return xml_root.getroot()
     else:
         raise AssertionError(f"{xsd_name.split('/')[-1]} said {xml_name.split('/')[-1]} is invalid")
+
+
+def city_in_db(city_id):
+    """
+
+    :param city_id:
+    :return bool: True if city_id is in bd else False
+    """
+    session = BaseXClient.Session('localhost', 1984, 'admin', 'admin')
+    query = f"""for $a in collection('FiveDayForecast')//weatherdata
+              where $a/location/location/@geobaseid = {city_id}
+              return $a"""
+    query2 = session.query(query)
+    result = query2.execute()
+    if result:
+        return True
+    else:
+        return False
