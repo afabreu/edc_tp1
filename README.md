@@ -19,6 +19,7 @@ Projeto no âmbito da Unidade Curricular de Engenharia de Dados e Conhecimento (
 
 ### 2.1 Usando Python Virtual Environment (recomendado):
 Versão de Python3: 3.8
+
 Versão do PIP: pip 20.2.4
 
 #### 2.1.1 Criar Virtual Environment:
@@ -36,6 +37,7 @@ Versão do PIP: pip 20.2.4
 ---
 ### 2.2 Usando Python (sem virtual Environment):
 Versão de Python3: 3.8
+
 Versão do PIP: pip 20.2.4
 
 #### 2.2.1 Instalar os PIPs necessários:
