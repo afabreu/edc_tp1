@@ -57,6 +57,7 @@ def home(request):
         'content_coimbra': html_coimbra,
         'location_id': 2742611,
         'year': datetime.now().year,
+        'title': "Meteorologia"
     }
     return render(request, 'temp.html', context)
 
@@ -96,7 +97,8 @@ def current_weather(request):
         'year': datetime.now().year,
         'location': location_str,
         'location_id': location_id,
-        'content': html
+        'content': html,
+        'title': "Meteorologia | Tempo Currente"
     }
     return render(request, 'index.html', context)
 
@@ -209,7 +211,8 @@ def forecast(request, local_id):
         'temp_inicio': submit_day.hour,
         'temp_fim': submit_day.hour + 3,
         'temp_dia': submit_day.day,
-        'content': html
+        'content': html,
+        'title': "Meteorologia | Previsão 5 dias"
     }
 
     return render(request, 'forecast.html', context)
@@ -245,7 +248,8 @@ def news(request):
     context = {
         'year': datetime.now().year,
         'rss': html,
-        'location_id': 2742611
+        'location_id': 2742611,
+        'title': "Meteorologia | Notícias IPMA"
     }
     return render(request, 'news.html', context)
 
