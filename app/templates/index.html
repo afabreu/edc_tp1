@@ -1,30 +1,13 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="row">
-    <form action="" class="find-location input-group col-md-8" method="post" >
-        {% csrf_token %}
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing">Localização</span>
-        </div>
-        <input type="text" class="form-control" name="local" placeholder="Procurar localização...">
-        <div class="input-group-append">
-            <input class="btn btn-outline-dark" type="submit" value="Procurar">
-        </div>
-    </form>
 
-    <div class="col-md-4">
-        <a class="btn btn-outline-dark" href="/forecast/{{ location_id }}" role="button">Previsão para 5 dias</a>
-    </div>
-</div>
-
-    <br><br>
 {% load static %}
 
 <div class="row">
     <div class="col-md">
         <h2>
-        {{ location }} - {{ localtion_id }} - Tempo Currente</h2>
+        {{ location }} | Tempo Currente</h2>
         {{ content | safe }}
     </div>
 </div>

@@ -1,57 +1,73 @@
 ﻿
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <title>{{ title }}</title>
+        <title>{{ title }}</title>
 
-    {% load static %}
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/site.css' %}" />
-    <link href="{% static 'css/all.css' %}" rel="stylesheet"> <!--load all styles -->
-  </head>
+        {% load static %}
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/site.css' %}" />
+        <link href="{% static 'css/all.css' %}" rel="stylesheet"> <!--load all styles -->
+    </head>
 
-  <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="{% url 'home' %}">Meteorologia</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="{% url 'home' %}">Meteorologia</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-      <div class="collapse navbar-collapse" id="navbarDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'news' %}">Noticias</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+            <div class="collapse navbar-collapse" id="navbarDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'news' %}">Noticias</a>
+                    </li>
+                </ul>
+            </div>
 
-    <main role="main">
-        <div class="container body-content">
-            <br><br><br>
-            {% block content %} {% endblock %}
-            <br><br><br>
-        </div> <!-- /container -->
-    </main>
+            <form action="" class="find-location input-group col-md-8" method="post" >
+                {% csrf_token %}
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-dark text-white" id="inputGroup-sizing">Localização</span>
+                </div>
+                <input type="text" class="form-control bg-dark text-white" name="local" placeholder="Procurar localização...">
+                <div class="input-group-append">
+                    <input class="btn btn-outline-light" type="submit" value="Procurar">
+                </div>
+                <hr/>
+                <a class="btn btn-outline-light" href="/forecast/{{ location_id }}" role="button">Previsão para 5 dias</a>
+            </form>
+        </nav>
 
-    <footer>
-        <hr />
-        <p>&emsp;&copy; {{ year }} - Meteorologia</p>
-    </footer>
+        <main role="main">
+            <div class="container body-content">
+                <br/>
+                <br/>
+                <br/>
+                {% block content %} {% endblock %}
+                <br/>
+                <br/>
+                <br/>
+            </div> <!-- /container -->
+        </main>
+
+        <footer>
+            <hr/>
+            <p>&emsp;&copy; {{ year }} - Meteorologia</p>
+        </footer>
 
     <!-- JQuery and Bootstrap core
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{% static 'scripts/jquery-3.4.1.min.js' %}"></script>
-    <script src="{% static 'scripts/popper.min.js' %}"></script>
-    <script src="{% static 'scripts/bootstrap.min.js' %}"></script>
-
-  </body>
+        <script src="{% static 'scripts/jquery-3.4.1.min.js' %}"></script>
+        <script src="{% static 'scripts/popper.min.js' %}"></script>
+        <script src="{% static 'scripts/bootstrap.min.js' %}"></script>
+    </body>
 </html>

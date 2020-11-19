@@ -18,10 +18,6 @@
         <table class="table">
             <tbody>
                 <tr>
-                    <th scope="row">Temperatura</th>
-                    <td><xsl:value-of select="time/temperature/@value"/>°C (min:<xsl:value-of select="time/temperature/@min"/>°C - max: <xsl:value-of select="time/temperature/@max"/> °C )</td>
-                </tr>
-                <tr>
                     <th scope="row">Sensação Térmica</th>
                     <td><xsl:value-of select="time/feels_like/@value"/> °C</td>
                 </tr>

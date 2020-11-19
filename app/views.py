@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from datetime import datetime, timedelta
 from app import basex_actions
 from lxml import etree
@@ -123,11 +123,33 @@ def forecast(request, local_id):
         if difference_data.days >= 5 or difference_data.days < 0:
             messages.warning(request, 'Selecione apenas até 5 dias.')
             submit_day = now
+    elif 'local' in request.POST:
+        location_str = request.POST['local']
+        if location_str == "":
+            messages.warning(request, 'Empty search! Default location shown')
+            submit_day = now
+        else:
+            location_str, location_id = get_local_id(location_str)
+
+            if not basex_actions.city_in_db(location_id):
+                root_forecast = basex_actions.api_call(location_id, to_string=True)
+
+                if "<?xml" in root_forecast:
+                    root_forecast = root_forecast[39:]
+
+                query = f"""let $d := doc('FiveDayForecast')
+                                    return insert node {root_forecast} as last into $d/FiveDayForecast """
+
+                query2 = session.query(query)
+                query2.execute()
+
+            return redirect(f'/forecast/{location_id}')
 
     else:
         submit_day = now
 
     location_str, location_id = local_str(local_id)
+
 
     # create or open db
     database()
@@ -153,6 +175,7 @@ def forecast(request, local_id):
         'title': f'Meteorologia - {submit_day.day}/{submit_day.month} - {submit_day.hour}:00',
         'year': datetime.now().year,
         'location': f'{location_str}',
+        'location_id': location_id,
         'temp_inicio': submit_day.hour,
         'temp_fim': submit_day.hour + 3,
         'temp_dia': submit_day.day,
@@ -163,6 +186,10 @@ def forecast(request, local_id):
 
 
 def news(request):
+
+    if 'local' in request.POST:
+        return home(request)
+
     rss = requests.get("http://www.ipma.pt/resources.www/rss/rss.news.ipma.xml")
     assert rss.status_code == 200, f"Request error! Status {rss.status_code}"
     # rss = rss.text
@@ -189,7 +216,8 @@ def news(request):
 
     context = {
         'year': datetime.now().year,
-        'rss': html
+        'rss': html,
+        'location_id': 2742611
     }
     return render(request, 'news.html', context)
 
