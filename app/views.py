@@ -30,6 +30,10 @@ with open(edc_tp1.settings.CITIES_JSON) as f:
         all_pt_cities[jd['name']] = jd['id']
 
 def home(request):
+
+    if 'local' in request.POST:
+        return current_weather(request)
+
     root_aveiro = basex_actions.current_weather('Aveiro')
 
     xslt_file = etree.parse(f"{edc_tp1.settings.XML_URL}homepage_weather.xsl")
@@ -50,7 +54,9 @@ def home(request):
         'content_aveiro': html_aveiro,
         'content_lisboa': html_lisboa,
         'content_porto': html_porto,
-        'content_coimbra': html_coimbra
+        'content_coimbra': html_coimbra,
+        'location_id': 2742611,
+        'year': datetime.now().year,
     }
     return render(request, 'temp.html', context)
 
@@ -212,11 +218,10 @@ def forecast(request, local_id):
 def news(request):
 
     if 'local' in request.POST:
-        return home(request)
+        return current_weather(request)
 
     rss = requests.get("http://www.ipma.pt/resources.www/rss/rss.news.ipma.xml")
     assert rss.status_code == 200, f"Request error! Status {rss.status_code}"
-    # rss = rss.text
     rss = rss.content.decode("UTF-8")
     rss = rss.replace('&A', '&amp;A')
 
@@ -226,7 +231,6 @@ def news(request):
     with open(f'{edc_tp1.settings.XML_URL}test.xml', 'r+', encoding="UTF-8") as file:
         xml = file.read()
 
-    #    xml = etree.parse(f"{edc_tp1.settings.XML_URL}rss.news.ipma.xml")
     xml = etree.fromstring(xml)
 
     xsd_root = etree.parse(f"{edc_tp1.settings.XML_URL}rss.news.ipma.xsd")
