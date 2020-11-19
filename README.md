@@ -2,6 +2,8 @@
 
 Projeto no âmbito da Unidade Curricular de Engenharia de Dados e Conhecimento (EDC)
 
+![Meteorologia em GIF][meteo.gif]
+
 ## 1. Tecnologias usadas:
 - Python/Django - Servidor Web em MVC;
 - XML - Formato do dados;
