@@ -98,7 +98,7 @@ def current_weather(request):
         'location': location_str,
         'location_id': location_id,
         'content': html,
-        'title': "Meteorologia | Tempo Currente"
+        'title': "Meteorologia | Tempo Atual"
     }
     return render(request, 'index.html', context)
 
