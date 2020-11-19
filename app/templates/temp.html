@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+
+    <div style="background-size: cover; padding: 70px; background-image: url('{% static 'img/ua_sunset.jpg' %}');"
+         data-bg-image="{% static 'img/ua_sunset.jpg' %}">
+        <div class="container" style="background-color: rgba(255, 255, 255, 0.3); border-radius: 35px;">
+            {{ content_aveiro | safe }}
+        </div>
+        <br>
+        <div class="container" style="background-color: rgba(255, 255, 255, 0.3); border-radius: 35px;">
+            {{ content_lisboa | safe }}
+        </div>
+        <br>
+        <div class="container" style="background-color: rgba(255, 255, 255, 0.3); border-radius: 35px;">
+            {{ content_porto | safe }}
+        </div>
+        <br>
+        <div class="container" style="background-color: rgba(255, 255, 255, 0.3); border-radius: 35px;">
+            {{ content_coimbra | safe }}
+        </div>
+    </div>
+
+{% endblock %}

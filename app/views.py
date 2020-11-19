@@ -29,8 +29,32 @@ with open(edc_tp1.settings.CITIES_JSON) as f:
     for jd in json_data:
         all_pt_cities[jd['name']] = jd['id']
 
-
 def home(request):
+    root_aveiro = basex_actions.current_weather('Aveiro')
+
+    xslt_file = etree.parse(f"{edc_tp1.settings.XML_URL}homepage_weather.xsl")
+    transform = etree.XSLT(xslt_file)
+    html_aveiro = transform(root_aveiro)
+
+    root_lisboa = basex_actions.current_weather('Lisbon')
+    html_lisboa = transform(root_lisboa)
+
+    root_porto = basex_actions.current_weather('Porto')
+    html_porto = transform(root_porto)
+
+    root_coimbra = basex_actions.current_weather('Coimbra')
+    html_coimbra = transform(root_coimbra)
+
+
+    context = {
+        'content_aveiro': html_aveiro,
+        'content_lisboa': html_lisboa,
+        'content_porto': html_porto,
+        'content_coimbra': html_coimbra
+    }
+    return render(request, 'temp.html', context)
+
+def current_weather(request):
     if 'local' in request.POST:
         location_str = request.POST['local']
         if location_str == "":
