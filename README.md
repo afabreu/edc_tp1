@@ -2,7 +2,7 @@
 
 Projeto no âmbito da Unidade Curricular de Engenharia de Dados e Conhecimento (EDC)
 
-![Meteorologia em GIF][https://raw.githubusercontent.com/andralves717/edc_tp1/master/meteo.gif?token=AID52KLZ4SUBZIIEQJJVLFK7YAQ32]
+![Meteorologia em GIF][https://raw.githubusercontent.com/andralves717/edc_tp1/master/meteo.gif]
 
 ## 1. Tecnologias usadas:
 - Python/Django - Servidor Web em MVC;
