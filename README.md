@@ -16,6 +16,11 @@ Projeto no âmbito da Unidade Curricular de Engenharia de Dados e Conhecimento (
 - [OpenWeather](api.openweathermap.org/) - Recolha de dados meteorológicos.
 
 ## 2. Como Executar:
+#### Pré-Requisitos:
+Versão de Python3: 3.8
+Versão do PIP: 20.2.4
+BaseXServer
+
 
 ### 2.1 Usando Python Virtual Environment (recomendado):
 Versão de Python3: 3.8
@@ -31,14 +36,14 @@ Versão do PIP: pip 20.2.4
 #### 2.1.3 Instalar os PIPs necessários:
 `pip install -r requirements.txt`
 
-#### 2.1.4 Usar o Pycharm para executar o projeto ou:
+#### 2.1.4 Executar BaseXServer:
+`basexserver`
+
+#### 2.1.5 Usar o Pycharm para executar o projeto ou:
 `python3 manage.py runserver`
 
 ---
 ### 2.2 Usando Python (sem virtual Environment):
-Versão de Python3: 3.8
-
-Versão do PIP: pip 20.2.4
 
 #### 2.2.1 Instalar os PIPs necessários:
 `pip install --user -r requirements.txt`
@@ -46,6 +51,10 @@ Versão do PIP: pip 20.2.4
 
 #### 2.2.2 Usar o Pycharm para executar o projeto ou:
 `python3 manage.py runserver`
+
+#### 2.2.3 Usar o Pycharm para executar o projeto ou:
+`python3 manage.py runserver`
+
 
 ## 3. Realizado por:
 
