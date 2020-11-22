@@ -49,8 +49,8 @@ Versão do PIP: pip 20.2.4
 `pip install --user -r requirements.txt`
 (É recomendado usar a opção --user para instalar localmente e não precisar de permissões de superuser)
 
-#### 2.2.2 Usar o Pycharm para executar o projeto ou:
-`python3 manage.py runserver`
+#### 2.2.2 Executar BaseXServer:
+`basexserver`
 
 #### 2.2.3 Usar o Pycharm para executar o projeto ou:
 `python3 manage.py runserver`
